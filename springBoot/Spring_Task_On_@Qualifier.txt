@@ -1,0 +1,40 @@
+
+Q1.Vehicle Service Selection.
+You are designing a vehicle maintenance system that can service cars, bikes, and trucks. Each vehicle has a different maintenance process, 
+and Spring should select the appropriate service using @Qualifier.
+
+Requirements:
+Create a VehicleService interface with a method performService().
+Implement CarService, BikeService, and TruckService.
+Annotate each service with @Service and a unique bean name.
+In ServiceCenter, inject VehicleService using @Autowired and @Qualifier("carService").
+When performService() is called, it should execute the correct vehicle service.
+How would you configure and use @Qualifier to inject the correct vehicle service?
+Note:Use AppConfig java class to make configuration.(Don't use xml configuration).
+
+
+Q2. Notification Sender Selection ✉️📱🔔
+
+Problem Statement:
+A system can send notifications via Email, SMS, and Push Notification. Inject correct one using @Qualifier.
+
+Requirements:
+
+NotificationService → sendNotification(String message).
+
+Implement: EmailNotificationService, SmsNotificationService, PushNotificationService.
+
+Inject into NotificationManager with @Qualifier("smsNotification").
+
+Q3. Report Generator Selection 📊📑
+
+Problem Statement:
+Create a reporting system that generates reports in PDF, Excel, and HTML. Use @Qualifier to select.
+
+Requirements:
+
+ReportGenerator → generateReport(String data).
+
+Implement: PdfReportGenerator, ExcelReportGenerator, HtmlReportGenerator.
+
+Inject into ReportService with @Qualifier("pdfReportGenerator").

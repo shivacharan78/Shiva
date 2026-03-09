@@ -1,0 +1,94 @@
+Task 1: Library Book Borrowing System
+Manage books, borrowing records, timestamps, and prevent concurrent update issues.
+
+🏗️ Step 1: Entity Class (Book)
+
+Fields:
+
+id → Primary key.
+
+title → Book title.
+
+author → Author name.
+
+availableCopies → Number of copies in stock.
+
+version → For optimistic locking.
+
+createdAt, updatedAt → For auditing timestamps.
+
+Add @Version for version control.
+
+Add auditing annotations for createdAt and updatedAt.
+
+🏗️ Step 2: Repository
+
+Create BookRepository extending JpaRepository<Book, Long>.
+
+Provides CRUD methods like save(), findById(), findAll().
+
+🏗️ Step 3: Service (Transactional)
+
+addBook(title, author, copies) → Adds a new book to the system.
+
+borrowBook(bookId) → Decrements available copies by 1, fails if no copies left.
+
+returnBook(bookId) → Increments available copies by 1.
+
+Use @Transactional so each borrow/return runs atomically.
+
+🏗️ Step 4: Runner (Testing Operations)
+
+Add a few books to the system.
+
+Borrow and return books, print details with version and timestamps.
+
+Simulate concurrent borrow attempt → one succeeds, the other fails due to OptimisticLockException.
+
+✅ This task shows:
+
+Data JPA for CRUD.
+
+Timestamping with auditing.
+
+Versioning with @Version.
+
+Transaction Management with @Transactional.
+====================================================================================================
+
+Task 2: Banking Transaction System
+Goal
+
+Simulate account creation, deposits, withdrawals with transaction management, versioning, and timestamping.
+
+Steps
+
+Entity Class (Account)
+
+Fields: id, holderName, balance.
+
+Add @Version for concurrency control.
+
+Extend Auditable for timestamps.
+
+Repository
+
+AccountRepository extends JpaRepository<Account, Long>.
+
+Service (Transactional)
+
+createAccount(holder, balance) → new account.
+
+deposit(accountId, amount) → increase balance.
+
+withdraw(accountId, amount) → decrease balance (rollback if insufficient funds).
+
+Runner
+
+Create accounts, deposit & withdraw.
+
+Test rollback on insufficient funds.
+
+Show balances with version & timestamps.
+
+👉 Each of these tasks demonstrates Data JPA (CRUD), Timestamping (@CreatedDate, @LastModifiedDate), Versioning (@Version), and Transaction Management (@Transactional).

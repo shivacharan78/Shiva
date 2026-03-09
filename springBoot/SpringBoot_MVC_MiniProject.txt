@@ -1,0 +1,86 @@
+📘 Mini Project Scenario: Library Book Management System
+You are developing a Spring Boot MVC web application (no REST API) for a University Library Book Management System. The goal is to allow the librarian to manage books using a browser-based interface with form inputs, validation, and a database (using Spring Data JPA).
+
+🧩 Part 1: Core Functional Requirements
+1️⃣ Add New Book (Form + Save to DB)
+Create a form page to add a new book.
+
+Fields to include:
+
+Title
+
+Author
+
+ISBN number
+
+Price
+
+Genre
+
+On form submission, save the book to the database using Spring Data JPA and show a success message or redirect to the list of books.
+
+2️⃣ Display All Books (List Page)
+Show a table of all books stored in the database.
+
+Each row should display:
+
+Title, Author, ISBN, Price, Genre
+
+This page should act as the main list view after any add/update/delete action.
+
+3️⃣ Validate Book Form Inputs
+Use validation annotations to validate form fields.
+
+For example:
+
+Title/Author/ISBN must not be blank
+
+ISBN must be 10 or 13 characters
+
+Price must be a positive number
+
+If any field is invalid, show clear error messages next to the respective fields.
+
+4️⃣ Delete a Book
+Add a “Delete” button next to each book in the list.
+
+On clicking it, the book should be removed from the database, and the updated list should be shown.
+
+5️⃣ Search Books by Title
+Create a search bar or form to enter a title keyword.
+
+On submission, display a list of books that contain the keyword (case-insensitive) in the title.
+
+🛠️ Part 2: Advanced Functional Enhancements
+6️⃣ Add Book Availability Toggle (Yes/No)
+Add a new field: available (true or false) to each book.
+
+Show this availability as “Yes” or “No” in the list.
+
+Add a button next to each book to toggle availability (available ↔ unavailable).
+
+7️⃣ Use Dropdown for Genre Selection
+Replace the free-text input for "Genre" with a dropdown menu.
+
+The dropdown should have fixed values like:
+
+Fiction, Science, History, Technology, Other
+
+8️⃣ View Only Available Books
+Create a separate page or link that shows only the books where available = true.
+
+9️⃣ Sort Books by Title or Price
+Add a dropdown to choose how to sort the list:
+
+Sort by Title (A-Z)
+
+Sort by Price (Low to High)
+
+Based on selection, display the sorted list of books.
+
+🔟 Edit Existing Book
+Add an Edit button next to each book.
+
+Clicking it should take you to the same form as Add Book but pre-filled with that book's existing data.
+
+After updating, save the changes to the database.

@@ -1,0 +1,69 @@
+Task 5: Transport Booking System
+================================
+Problem Statement
+
+You are creating a booking system that allows travel by Bus, Train, or Flight. Use Singleton scope and @Qualifier.
+
+Requirements
+
+TransportService Interface
+
+Method:
+
+void book(String source, String destination);
+
+
+Implementations
+
+BusTransportService → "Booking Bus from <source> to <destination>"
+
+TrainTransportService → "Booking Train from <source> to <destination>"
+
+FlightTransportService → "Booking Flight from <source> to <destination>"
+
+BookingManager Class
+
+Attribute: TransportService transportService
+
+Method: bookTicket(String src, String dest) calls the injected service.
+
+Use @Qualifier to inject desired transport service.
+
+Singleton Scope Validation
+
+Print hashcodes → same instance every time.
+
+🔹 Task 6: Document Storage System
+==================================
+Problem Statement
+
+You are developing a system that stores documents into Local File System, Cloud Storage, or Database. Use Singleton scope and @Qualifier.
+
+Requirements
+
+StorageService Interface
+
+Method:
+
+void store(String fileName);
+
+
+Implementations
+
+FileSystemStorageService → "Storing <fileName> in Local File System"
+
+CloudStorageService → "Storing <fileName> in Cloud Storage"
+
+DatabaseStorageService → "Storing <fileName> in Database"
+
+StorageManager Class
+
+Attribute: StorageService storageService
+
+Method: save(String file) uses the injected service.
+
+Use @Qualifier to choose storage type.
+
+Singleton Scope Check
+
+Verify by printing bean hashcodes.

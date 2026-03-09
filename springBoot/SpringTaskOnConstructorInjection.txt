@@ -1,0 +1,84 @@
+Task 1: Payment Gateway Integration using Constructor Injection (XML Configuration)
+🧩 Objective:
+Design a Spring Core application to simulate a payment system where the required payment service (e.g., PayPal or Stripe) is injected via constructor using Spring XML configuration.
+
+✅ Task Steps:
+Step 1: Define Interface
+Create a PaymentService interface with a method to process payment.
+This will serve as the abstraction for multiple payment options.
+
+Step 2: Implement Services
+Create two classes:
+
+PayPalService: Implements PaymentService to simulate PayPal payments.
+
+StripeService: Implements PaymentService to simulate Stripe payments.
+
+Step 3: Define Main Component
+Create a class PaymentProcessor that depends on PaymentService.
+Use a constructor to inject this dependency.
+
+Step 4: Configure Beans in XML
+Create an applicationContext.xml file to declare Spring beans:
+
+Define a bean for PayPalService or StripeService.
+
+Define a bean for PaymentProcessor and inject the service via <constructor-arg>.
+
+Step 5: Load and Run
+In your main class:
+
+Load the Spring container using ClassPathXmlApplicationContext.
+
+Retrieve the PaymentProcessor bean.
+
+Call a method to process a sample payment.
+
+
+Question2:
+==========
+Wish Message Generator Using Constructor Injection in Spring
+You are tasked with developing a Spring Core application that generates a wish message based on the current time of day using constructor-based dependency injection. The application should use LocalDateTime to determine whether to send a "Good Morning", "Good Afternoon", or "Good Evening" message.
+
+Requirements:
+WishMessageGenerator Class:
+
+Create a WishMessageGenerator class with the following attributes:
+LocalDateTime currentDateTime: This will store the current date and time.
+Implement a constructor WishMessageGenerator(LocalDateTime currentDateTime) to allow for dependency injection using Spring.
+Implement a generateWishMessage() method that returns:
+"Good Morning" if the time is before 12 PM.
+"Good Afternoon" if the time is between 12 PM and 6 PM.
+"Good Evening" if the time is after 6 PM.
+Note:
+Use an XML file to configure the Spring bean.
+Main Class:
+Create a main class that loads the Spring application context, retrieves the WishMessageGenerator bean, and prints the wish message based on the current time.
+Expected Output:
+
+If the current time is before 12 PM:
+Good Morning  
+If the current time is between 12 PM and 6 PM:
+Good Afternoon  
+If the current time is after 6 PM:
+Good Evening 
+
+
+ Question 3: Notification Sender (XML-Based Constructor Injection)
+🧩 Objective:
+Build a system that sends notifications using Email or SMS services, injected via constructor through XML configuration.
+
+✅ Task Steps:
+Create a NotificationService interface for sending messages.
+
+Implement EmailNotification and SmsNotification.
+
+Create a NotificationSender class with a constructor that requires NotificationService.
+
+In applicationContext.xml:
+
+Define beans for both implementations.
+
+Inject the desired one into NotificationSender.
+
+Load the context and trigger a test notification.

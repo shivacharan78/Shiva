@@ -1,0 +1,45 @@
+Spring Boot JPA Programming Question using BLOB and CLOB
+=============================================================
+🟩 Problem Statement:
+You are building a Spring Boot console application for storing and retrieving employee documents.
+
+Each EmployeeDocument has:
+=======================
+
+An id (Long)
+
+An employeeName (String)
+
+A profilePhoto (image stored as BLOB - byte[])
+
+A bio (long text stored as CLOB - String)
+
+Write a Spring Boot application that:
+
+Saves an EmployeeDocument by reading:
+
+A JPG image file from disk (e.g., profile.jpg)
+
+A bio text file (e.g., bio.txt)
+
+Reads the same record from DB and:
+
+Writes the BLOB back to a file output_profile.jpg
+
+Prints the bio (CLOB) on the console
+
+🧩 You Need to Write:
+EmployeeDocument entity with @Lob
+
+EmployeeDocumentRepository interface
+
+CommandLineRunner in main class to:
+
+Read files
+
+Save to DB
+
+Read from DB
+
+Write/read back to file/console
+

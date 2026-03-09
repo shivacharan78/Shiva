@@ -1,0 +1,86 @@
+Movie Ticket Booking System (Spring Java Config with @Qualifier):
+==================================================================
+You are required to build a movie ticket booking system using Java and Spring Framework, where users can interact with different movie booking services (BookMyShowService and InoxService) to perform operations such as book a ticket, cancel a ticket, and view available shows.
+
+The solution must use Spring Java-based configuration (@Configuration and @Bean) and inject the required implementation using @Qualifier.
+
+🎯 Requirements:
+📦 Package: com.MovieBookingApplication.requirement
+Define Interface:
+Create a BookingService interface with the following methods:
+void bookTicket(String movieName) throws MovieNotFoundException, InvalidBookingException
+
+void cancelTicket(String movieName) throws InvalidBookingException
+
+void viewShows()
+
+📦 Package: com.MovieBookingApplication.exception
+Custom Exceptions:
+
+Create two custom exceptions:
+MovieNotFoundException: Thrown when attempting to book a movie that doesn't exist in the show list.
+
+InvalidBookingException: Thrown when attempting to cancel a ticket that wasn't booked, or the movie name is invalid (null/empty).
+
+📦 Package: com.MovieBookingApplication.beans
+Implementations:
+
+Create two classes implementing BookingService:
+
+BookMyShowService
+
+InoxService
+
+Each class must include:
+private static String cinemaName;
+private static String location;
+private static String partnerCode;
+(Fields must be initialized via setter methods)
+
+private List<String> availableShows;
+
+private List<String> bookedTickets;
+
+Method Logic:
+
+bookTicket: Book only if the movie is in availableShows. Add to bookedTickets. Otherwise, throw MovieNotFoundException.
+
+cancelTicket: Cancel only if the movie is in bookedTickets. Remove it. Otherwise, throw InvalidBookingException.
+
+viewShows: Display all available shows.
+
+📦 Package: com.MovieBookingApplication.config
+Java-based Configuration:
+
+Create a BookingAppConfig class annotated with @Configuration. Define beans for both services:
+
+BookMyShowService bean
+
+InoxService bean
+
+A MovieBookingApplication bean that depends on BookingService, injected using @Qualifier
+
+📦 Package: com.MovieBookingApplication.implementation
+MovieBookingApplication Class:
+
+Create a MovieBookingApplication class that depends on BookingService. This class will be injected with the appropriate service using constructor injection. It delegates operations to the service.
+
+📦 Package: com.MovieBookingApplication.user
+MovieUser Class:
+
+Create a MovieUser class that:
+
+Accepts input from the user using Scanner
+
+Loads the Spring context using AnnotationConfigApplicationContext
+
+Retrieves the MovieBookingApplication bean
+
+Provides a menu-driven interface with the following options:
+
+Book a ticket
+
+Cancel a ticket
+
+View available shows
+

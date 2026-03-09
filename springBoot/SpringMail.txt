@@ -1,0 +1,62 @@
+Task: Spring Boot Mail — Send a Simple Email
+🎯 Objective:
+Create a Spring Boot application that sends a plain text email using Spring Boot Mail and Gmail SMTP.
+
+✅ Requirements:
+1. Project Setup
+Use Spring Boot 3.1.5 (Java 17 or higher).
+
+Add the following dependencies in pom.xml:
+
+spring-boot-starter-mail
+
+spring-boot-starter
+
+
+2. Mail Configuration
+Configure application.properties with:
+
+SMTP host (smtp.gmail.com)
+
+Port (587)
+
+Your Gmail email & App Password (not normal password)
+
+Enable authentication and TLS
+
+Example:
+
+properties
+
+spring.mail.host=smtp.gmail.com
+spring.mail.port=587
+spring.mail.username=your_email@gmail.com
+spring.mail.password=your_app_password
+spring.mail.properties.mail.smtp.auth=true
+spring.mail.properties.mail.smtp.starttls.enable=true
+3. Mail Service Class
+Create a MailService class annotated with @Component.
+
+Inject JavaMailSender.
+
+Create sendMail(String to, String subject, String text) method.
+
+Inside the method:
+
+Create a SimpleMailMessage object.
+
+Set recipient, subject, and text.
+
+Send email using mailSender.send(message).
+
+4. Main Application Class
+Create a Spring Boot main class implementing CommandLineRunner.
+
+In run() method, call mailService.sendMail(...) with a sample recipient and message.
+
+Print a confirmation message after sending.
+
+5. Execution
+Run the application using:
+Verify that the recipient email inbox contains the sent message.
+

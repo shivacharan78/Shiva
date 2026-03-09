@@ -1,0 +1,34 @@
+Task 1: Notification System with Multiple Channels
+
+Scenario:
+You are building a notification system that can send messages through different channels such as Email, SMS, Push Notification, and WhatsApp.
+
+Requirements:
+
+Create a NotificationService interface with a method send(String message).
+
+Implement four services: EmailNotification, SMSNotification, PushNotification, WhatsAppNotification.
+
+Use bulk injection (List<NotificationService>) in a NotificationManager to send the same message through all channels.
+
+Also inject using Map<String, NotificationService> so that the user can choose a specific channel (e.g., "email", "sms").
+
+Add logic to block sending notifications via WhatsApp if the message length exceeds 100 characters.
+
+🔹 Task 2: Discount Strategy for Shopping Cart
+
+Scenario:
+An e-commerce application applies different discount strategies based on payment method or festival offers.
+
+Requirements:
+
+Create a DiscountService interface with a method double applyDiscount(double amount).
+
+Implement multiple strategies: NewYearDiscount, DiwaliDiscount, CreditCardDiscount, CouponDiscount.
+
+Inject all discounts as a Set<DiscountService> in DiscountProcessor and show the final amount for each discount.
+
+Use a Map<String, DiscountService> to apply a selected discount based on user input.
+
+If no discount matches, fallback to a NoDiscountService.
+

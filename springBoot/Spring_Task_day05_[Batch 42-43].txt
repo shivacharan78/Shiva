@@ -1,0 +1,227 @@
+Que-1
+_____________________
+📝 Spring Core Practical Assignment: Customer Bank Account Simulation
+___________________________________________________________________________
+🔧 Use Case:
+-----------------------
+Design a Spring Core-based application to simulate a banking system where a Customer owns a bank Account.
+The system must initialize account data using Spring XML configuration and perform basic banking 
+operations like deposit and withdrawal.
+
+✅ Requirements:
+----------------------
+1. Class 1: Customer
+_____________________________
+Fields:
+
+> firstName (String)
+> lastName (String)
+
+|- Constructor:
+   > No-arg constructor
+   > Parameterized constructor for full initialization
+
+|- Methods:
+  > Getters and Setters for all fields
+
+|- Override toString() 
+   to display customer information
+
+2. Class 2: Account
+_____________________________
+Fields:
+
+> accountNo (int)
+> balance (double)
+> interestRate (float)
+> customer (HAS-A relationship with Customer)
+
+> Constructor:
+  |- No-arg constructor to initialize default values
+
+Methods:
+______________________
+> deposit(double amount): Adds amount to current balance
+> withdraw(double amount): Deducts amount from balance if sufficient funds exist
+> Getters and Setters for all fields
+> Override toString() to display full account information including customer
+
+🧾 Spring XML Configuration (application05-context.xml):
+__________________________________________________________
+|- Create a <bean> for Customer and inject:
+    > firstName = "Virat"
+    > lastName = "Kohli"
+
+|- Create a <bean> for Account and inject:
+    > accountNo = 1231231
+    > balance = 4000.0
+    > interestRate = 5.5
+    > Inject customer bean into account using ref
+
+🎯 Client Class: Tester
+___________________________________________________________
+Load the Spring configuration using ClassPathXmlApplicationContext.
+
+Retrieve the account bean.
+
+Print account info before and after:
+
+Deposit ₹4000
+
+Withdraw ₹2000
+
+💡 Expected Output (Sample):
+______________________________________
+After getting the object 
+Account [customer=Customer [firstName=virat, lastName=kholi], balance=4000.0, accountNo=1231231, interestRate=5.5]
+After deposite 
+Account [customer=Customer [firstName=virat, lastName=kholi], balance=8000.0, accountNo=1231231, interestRate=5.5]
+After withdraw
+Account [customer=Customer [firstName=virat, lastName=kholi], balance=6000.0, accountNo=1231231, interestRate=5.5]
+
+📂 Project Structure Guidelines:
+____________________________________
+src/
+├── com/
+│   └── task/
+│       └── springCore/
+│           ├── Customer.java
+│           ├── Account.java
+│           └── Tester.java
+├── com/
+│   └── bd/
+│       └── commons/
+│           └── application05-context.xml
+
+📌 Instructions:
+|- Use only Spring XML configuration for bean definition and property injection.
+|- Avoid annotation-based configuration.
+|- Properly separate model classes and configuration.
+|- Ensure the output clearly reflects changes in account state after deposit and withdrawal.
+
+
+________________________________________________________________________________________________________________________
+Que-2
+___________________________________________________________________________
+Spring Core Assignment Question: Fee Management System Simulation
+__________________________________________________________________________
+Use Case:
+You are building a Spring Core application to simulate a student fee submission system.
+Students can be categorized as either DayScholars or Hostellers, each having additional fees (transport or hostel) 
+added to their base exam fee. Based on the amount paid by the student, the system should calculate the due or excess 
+amount and display the student's details accordingly.
+
+✅ Requirements:
+____________________________
+Base Class: Student
+-------------------
+Fields:
+----------
+|- name      (String)
+   Modifier  (private)
+
+|- studentId (int)
+   Modifier  (private)
+
+|- examFee  (double)
+   Modifier  (private)
+
+|- amount (double) → the amount student has paid
+   Modifier  (private)
+
+[ Take name ,id , examFee with the use of constructor injection ]
+[ Take amount with the use of setter injection ]
+
+
+Methods:
+=============
+> payFee():
+  |- Calculates the difference between examFee and amount.
+     [ if the amount is > than fee return the output as +ve amount ]
+     [ if the amount is < than fee return the output as -ve amount ] 
+     [ if the amount is == fee then return the output as 0 amount  ]
+
+
+> displayDetails():
+ |- Returns student's information.
+ |- call toString from this method and return 
+
+> Provide both a default and a parameterized constructor.
+  [ In parameterized constructor take only 3 parameter as name, id ,examFee ] 
+
+> Use toString() 
+ |- to represent student data.
+ |- [ 
+
+Subclass 1: 
+_________________________________________________________________________________
+DayScholar (inherits Student)
+------------------------------
+Additional Field:
+------------------
+> transportFee (double) 
+  |-  Modifier  (private)
+
+> Override payFee() 
+  |- to consider examFee + transportFee.
+     [ if the amount is > than fee return the output as +ve amount ]
+     [ if the amount is < than fee return the output as -ve amount ] 
+     [ if the amount is == fee then return the output as 0 amount  ]
+
+
+> Override displayDetails() 
+  |- to include transportFee.
+  
+
+Subclass 2:
+__________________________________________________________________________________
+Hosteller (inherits Student)
+--------------------------------
+Additional Field:
+-------------------
+> hostelFee (double)
+  |- Modifier  (private)
+
+> Override payFee() 
+  |- to consider examFee + hostelFee.
+     [ if the amount is > than fee return the output as +ve amount ]
+     [ if the amount is < than fee return the output as -ve amount ] 
+     [ if the amount is == fee then return the output as 0 amount  ]
+
+> Override displayDetails() 
+  |- to include hostelFee.
+
+
+Spring Configuration:
+________________________________________________________________________________
+Use Spring Core XML configuration to define beans for DayScholar students.
+> Inject values using constructor injection.
+> Inject amount using <property> tag.
+> Add at least 3 student beans with varying amount paid.
+
+Client Class: FeeSubmission
+________________________________________________________________________________
+Use ApplicationContext to load XML config.
+
+> Get the bean objects using context.getBean().
+> Call payFee() and based on return value:
+  |- If positive: show how much more to pay.
+  |- If negative: show how much refund to give.
+  |- If zero: show dues are clear.
+
+> Display all student details using toString().
+
+____________________________________________________________________________________________________|
+🧾 Expected Output Sample:                                                                         ||                 
+____________________________________________________________________________________________________|
+have to pay more amount of Rs.                                                                      |
+Rs. 0.0                                                                                             |
+DayScholar [transportFee=3000.0, name=Virat, studentId=101, Amount for fee 13000.0, examFee=4000.0] |
+--------------------------------                                                                    |
+have to pay more amount of Rs.                                                                      |
+Rs. 4000.0                                                                                          |
+DayScholar [transportFee=3000.0, name=Dhoni, studentId=102, Amount for fee 3000.0, examFee=4000.0]  |
+-----------------------------------                                                                 |
+All due clear !!                                                                                    |
+DayScholar [transportFee=3000.0, name=Rohit, studentId=102, Amount for fee 7000.0, examFee=4000.0]  |
+____________________________________________________________________________________________________|

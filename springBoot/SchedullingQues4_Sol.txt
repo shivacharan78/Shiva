@@ -1,0 +1,108 @@
+package com.example;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.scheduling.annotation.EnableScheduling;
+
+@SpringBootApplication
+@EnableScheduling
+public class SchedularTaskApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(SchedularTaskApplication.class, args);
+	}
+
+}
+
+===================================================================================
+
+
+package com.example.renewal.model;
+
+import java.time.LocalDate;
+
+public class User {
+    private Long id;
+    private String name;
+    private String email;
+    private LocalDate subscriptionEndDate;
+    private UserStatus status;
+
+    public User(Long id, String name, String email, LocalDate subscriptionEndDate, UserStatus status) {
+        this.id = id;
+        this.name = name;
+        this.email = email;
+        this.subscriptionEndDate = subscriptionEndDate;
+        this.status = status;
+    }
+
+    public Long getId() { return id; }
+    public String getName() { return name; }
+    public String getEmail() { return email; }
+    public LocalDate getSubscriptionEndDate() { return subscriptionEndDate; }
+    public UserStatus getStatus() { return status; }
+    public void setStatus(UserStatus status) { this.status = status; }
+}
+
+
+========================================================================================
+package com.example.renewal.model;
+
+public enum UserStatus {
+    ACTIVE,
+    INACTIVE
+}
+
+
+==========================================================================================
+
+package com.example.renewal.service;
+
+import com.example.renewal.model.User;
+import com.example.renewal.model.UserStatus;
+import jakarta.annotation.PostConstruct;
+import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.stereotype.Service;
+
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
+
+@Service
+public class UserService {
+
+    private final List<User> users = new ArrayList<>();
+    private final DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+
+    @PostConstruct
+    public void initUsers() {
+        users.add(new User(1L, "Alice", "alice@example.com", LocalDate.now().plusDays(3), UserStatus.ACTIVE));
+        users.add(new User(2L, "Bob", "bob@example.com", LocalDate.now().plusDays(10), UserStatus.ACTIVE));
+        users.add(new User(3L, "Charlie", "charlie@example.com", LocalDate.now().minusDays(2), UserStatus.ACTIVE));
+        users.add(new User(4L, "David", "david@example.com", LocalDate.now(), UserStatus.INACTIVE));
+        users.add(new User(5L, "Eva", "eva@example.com", LocalDate.now().plusDays(6), UserStatus.ACTIVE));
+    }
+
+    @Scheduled(cron = "0 37 9 * * MON-SAT")
+    public void checkSubscriptions() {
+        LocalDate today = LocalDate.now();
+        LocalDate nextWeek = today.plusDays(7);
+
+        System.out.println("\n=== [Auto Check] " + today + " ===");
+
+        for (User user : users) {
+            LocalDate endDate = user.getSubscriptionEndDate();
+
+            if (user.getStatus() == UserStatus.ACTIVE &&
+                    (endDate.isAfter(today.minusDays(1)) && endDate.isBefore(nextWeek.plusDays(1)))) {
+                System.out.println("🔔 Reminder: " + user.getName() + "'s subscription expires on " + dtf.format(endDate));
+            }
+
+            if (user.getStatus() == UserStatus.ACTIVE && endDate.isBefore(today)) {
+                user.setStatus(UserStatus.INACTIVE);
+                System.out.println("❌ Deactivated: " + user.getName() + " (expired on " + dtf.format(endDate) + ")");
+            }
+        }
+    }
+}

@@ -1,0 +1,141 @@
+Smart Home Automation System 🏠⚡💡
+==================================
+Problem Statement:
+You are designing a Smart Home Automation System using Spring Core. The system controls different appliances (Light, Fan, Air Conditioner, Heater). Each appliance can be powered by different power sources (Electricity, Solar, Battery).
+
+Your goal is to design the system such that:
+
+Each appliance implements a common interface Appliance.
+
+Each power source implements a common interface PowerSource.
+
+The system should allow injecting a specific appliance with a specific power source using @Qualifier.
+
+A HomeController class should manage appliances and delegate their working based on injected beans.
+
+Requirements:
+
+Interfaces:
+
+Appliance with method operate().
+
+PowerSource with method supplyPower().
+
+Implementations (Appliances):
+
+Light (prints "Light is ON using <power source>").
+
+Fan (prints "Fan is running using <power source>").
+
+AirConditioner (prints "Air Conditioner cooling using <power source>").
+
+Heater (prints "Heater heating using <power source>").
+
+Implementations (Power Sources):
+
+ElectricityPower
+
+SolarPower
+
+BatteryPower
+
+Wiring Rules:
+
+Use @Component("beanName") for each implementation.
+
+Inject appliances into HomeController with a specific power source using @Autowired + @Qualifier.
+
+Example: A Light powered by Solar, a Fan powered by Electricity, and an AC powered by Battery.
+
+
+HomeController class should have methods:
+
+controlLight()
+
+controlFan()
+
+controlAC()
+
+controlHeater()
+
+Each method calls the respective appliance’s operate().
+
+Configuration:
+
+Use AppConfig (Java-based, no XML) with @ComponentScan.
+
+Execution:
+
+In MainApp, load context, get HomeController, and test all methods.
+
+
+2.Food Delivery Aggregator System 🍔📦
+=========================================
+Problem Statement:
+Design a Spring Core application that simulates a Food Delivery Aggregator like Swiggy/Zomato.
+The system must manage Restaurants and Delivery Services.
+
+Requirements:
+
+Interfaces:
+
+Restaurant → method prepareFood().
+
+DeliveryService → method deliver(String food).
+
+Restaurant Implementations:
+
+Dominos (Pizza)
+
+KFC (Chicken Bucket)
+
+BurgerKing (Whopper Burger)
+
+Delivery Implementations:
+
+ZomatoDelivery
+
+SwiggyDelivery
+
+UberEatsDelivery
+
+Business Rules:
+
+Each Restaurant depends on a DeliveryService.
+
+Example:
+
+Dominos delivers via Swiggy
+
+KFC delivers via Zomato
+
+BurgerKing delivers via UberEats
+
+
+
+FoodOrderController class with methods:
+
+orderFromDominos()
+
+orderFromKFC()
+
+orderFromBurgerKing()
+
+Config:
+
+Use @ComponentScan and @Qualifier.
+
+No XML.
+
+Execution:
+
+In MainApp, test all orders.
+
+Expected OutPut:
+===================
+Dominos prepared Pizza
+Delivered Pizza via Swiggy
+KFC prepared Chicken Bucket
+Delivered Chicken Bucket via Zomato
+BurgerKing prepared Whopper Burger
+Delivered Whopper Burger via UberEats

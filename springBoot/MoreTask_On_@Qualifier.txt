@@ -1,0 +1,115 @@
+1. Online Learning Platform 🎓💻📚
+===================================
+Problem Statement:
+-------------------
+You are building a Spring Core application that simulates an Online Learning Platform where Students can enroll in different Courses, 
+and each Course is delivered through a specific DeliveryMode (Online, Recorded, or Classroom).
+
+The system should use interfaces + implementations + dependency injection with @Qualifier.
+
+Requirements:
+Interfaces:
+
+Course → method String getCourseName()
+
+DeliveryMode → method String deliver(String courseName)
+
+Implementations (Courses):
+
+JavaCourse → "Java Programming"
+
+PythonCourse → "Python for Beginners"
+
+DataScienceCourse → "Data Science with ML"
+
+Implementations (Delivery Modes):
+
+OnlineDelivery → delivers "Live Online"
+
+RecordedDelivery → delivers "Recorded Video"
+
+ClassroomDelivery → delivers "In-Person Classroom"
+
+Business Rules:
+
+JavaCourse uses OnlineDelivery
+
+PythonCourse uses RecordedDelivery
+
+DataScienceCourse uses ClassroomDelivery
+
+Controller:
+
+LearningController with methods:
+
+enrollJavaCourse()
+
+enrollPythonCourse()
+
+enrollDataScienceCourse()
+
+Each method prints:
+
+Enrolled in <CourseName>
+Delivered via <DeliveryMode>
+
+Config:
+
+Use @ComponentScan, @Autowired, @Qualifier.
+
+No XML.
+
+Execution:
+
+In MainApp, load Spring context, get LearningController, and test enrollments.
+
+3. Ride Sharing System 🚖🚲🚙
+==============================
+Problem Statement:
+
+You are designing a Ride Sharing System where users can book different types of vehicles (Car, Bike, Auto) and each ride can use different Payment Methods (Cash, Wallet, Card).
+
+You must design the system with interfaces, implementations, and Spring DI with @Qualifier.
+
+Requirements:
+Interfaces:
+
+Vehicle → String ride()
+
+PaymentMethod → String pay(double amount)
+
+Implementations (Vehicle):
+
+Car → "Car ride started"
+
+Bike → "Bike ride started"
+
+Auto → "Auto ride started"
+
+Implementations (Payment Method):
+
+CashPayment → "Paid <amount> in Cash"
+
+WalletPayment → "Paid <amount> using Wallet"
+
+CardPayment → "Paid <amount> using Card"
+
+Business Rules:
+
+Car uses CardPayment
+
+Bike uses WalletPayment
+
+Auto uses CashPayment
+
+Controller:
+
+RideController with methods:
+
+bookCar(double amount)
+
+bookBike(double amount)
+
+bookAuto(double amount)
+
+Each method prints ride + payment.

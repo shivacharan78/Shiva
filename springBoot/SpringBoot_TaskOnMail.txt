@@ -1,0 +1,109 @@
+Task: Spring Boot MVC + Data JPA CRUD with Email Notification
+🎯 Objective:
+Develop a Spring Boot MVC application with JSP pages for performing CRUD operations on a User entity and sending email notifications when a user is created.
+
+✅ Requirements:
+1. Project Setup
+Spring Boot 3.1.5 (Java 17+)
+
+Dependencies:
+
+spring-boot-starter-web
+
+spring-boot-starter-data-jpa
+
+spring-boot-starter-mail
+
+spring-boot-starter-tomcat (provided if war)
+
+mysql-connector-j
+
+jakarta.servlet.jsp
+
+jakarta.servlet.jstl
+
+2. Database Configuration
+application.properties
+
+properties
+spring.datasource.url=jdbc:mysql://localhost:3306/testdb
+spring.datasource.username=root
+spring.datasource.password=yourpassword
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
+spring.mvc.view.prefix=/WEB-INF/views/
+spring.mvc.view.suffix=.jsp
+3. Mail Configuration
+properties
+spring.mail.host=smtp.gmail.com
+spring.mail.port=587
+spring.mail.username=your_email@gmail.com
+spring.mail.password=your_app_password
+spring.mail.properties.mail.smtp.auth=true
+spring.mail.properties.mail.smtp.starttls.enable=true
+⚠ Use an App Password for Gmail.
+
+4. Entity
+User with fields:
+
+id (Long, auto-generated)
+
+name (String)
+
+email (String)
+
+5. Repository
+public interface UserRepository extends JpaRepository<User, Long> { }
+6. Service Layer
+UserService:
+
+saveUser(User user) → Save user and send email
+
+getAllUsers() → List all
+
+getUserById(Long id)
+
+updateUser(User user)
+
+deleteUser(Long id)
+
+Method sendEmail(String to, String subject, String text) using JavaMailSender.
+
+7. Controller Layer
+UserController:
+
+GET /users → Show all users (JSP)
+
+GET /users/add → Show form to add user
+
+POST /users/save → Save user and send email
+
+GET /users/edit/{id} → Show edit form
+
+POST /users/update → Update user
+
+GET /users/delete/{id} → Delete user
+
+8. JSP Views
+list-users.jsp → Display table of all users + actions.
+
+add-user.jsp → Form to add new user.
+
+edit-user.jsp → Form to update user.
+
+9. Email Sending Rule
+Send email only on user creation.
+
+Bonus: also send on update and delete.
+
+10. Testing
+Run the Spring Boot app.
+
+Open in browser: http://localhost:8080/users.
+
+Add a new user via form — verify:
+
+User appears in the list.
+
+Email received in inbox.
+

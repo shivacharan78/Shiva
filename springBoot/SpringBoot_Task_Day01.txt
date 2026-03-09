@@ -1,0 +1,100 @@
+ Spring Boot Core Task: Season Finder:
+=======================================
+✅ Objective
+Build a Spring Boot Core-based console application that:
+Accepts a month number (1–12) as user input from the console.
+Determines the correct season (Winter, Spring, Summer, Autumn).
+Prints the result in the console.
+
+🛠 Task Requirements
+1.Main Application Class
+
+Use @SpringBootApplication.
+Launch the app using SpringApplication.run().
+Create a SeasonService class.
+Annotate it with @Component.
+
+Add a method:
+public String getSeason(int month)
+which returns the season string based on the month.
+Use Scanner to prompt the user:
+"Enter month number (1–12):"
+Pass input to SeasonService.getSeason().
+
+Print the result to the console.
+
+If the user enters an invalid month (outside 1–12), return:
+"Invalid month! Please enter 1–12."
+
+Program02.Spring Boot Core Task: Product Discount Calculator
+=======================================
+
+✅ Objective
+Build a Spring Boot Core-based console application that:
+
+Accepts product price and discount percentage.
+
+Calculates and prints the final price after discount.
+
+🛠 Task Requirements
+
+1️.Main Application Class
+
+Use @SpringBootApplication.
+
+Launch the app using SpringApplication.run().
+
+2️.DiscountService Class
+
+Annotate it with @Component.
+
+Add a method:
+public double applyDiscount(double price, double discountPercentage)
+→ returns the discounted price.
+
+3️.Input Handling
+
+Use Scanner to prompt:
+Enter original price:
+Enter discount percentage:
+4️.Output
+
+Print the result:
+Final price after discount: $450.0
+
+Program03.Spring Boot Core Task: Even or Odd Checker
+====================================================
+
+✅ Objective
+Build a Spring Boot Core-based console application that:
+
+Accepts a number as input.
+
+Prints whether it’s even or odd.
+
+🛠 Task Requirements
+
+1️.Main Application Class
+
+Use @SpringBootApplication.
+
+Launch the app using SpringApplication.run().
+
+2️.NumberService Class
+
+Annotate it with @Component.
+
+Add a method:
+
+public String checkEvenOdd(int number)
+→ returns "even" or "odd".
+
+3️.Input Handling
+
+Use Scanner to prompt:
+Enter a number:
+4️.Output
+Print the result:
+42 is even.
+
+

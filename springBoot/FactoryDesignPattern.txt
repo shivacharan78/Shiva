@@ -1,0 +1,228 @@
+
+Task01:Food Ordering System
+============================
+
+Step 1: Define the Food Interface
+
+Create an interface Food with method:
+
+String prepareFood();
+
+
+This will be implemented by different meal types (Pizza, Burger, Salad).
+
+Step 2: Create Concrete Food Classes
+
+Pizza Class
+
+Attributes: type (Veg/Non-Veg), size (Small/Medium/Large).
+
+Implements Food.
+
+prepareFood() should return description like:
+"Preparing Veg Pizza (Medium Size)".
+
+Burger Class
+
+Attributes: type (Veg/Non-Veg), extraCheese (boolean).
+
+Implements Food.
+
+prepareFood() should return description like:
+"Preparing Non-Veg Burger with Extra Cheese".
+
+Salad Class
+
+Attributes: type (Veg/Non-Veg), dressingStyle (Italian/Greek etc.).
+
+Implements Food.
+
+prepareFood() should return description like:
+"Preparing Veg Salad with Italian Dressing".
+
+Step 3: Define the FoodType Interface
+
+Create an interface FoodType with method:
+
+String getFoodType();
+
+
+Implementations:
+
+VegFood Class → returns "Veg".
+
+NonVegFood Class → returns "Non-Veg".
+
+Step 4: Create FoodFactory Interface
+
+Method:
+
+Food createFood(String type, String foodType);
+
+
+This interface standardizes how food is created.
+
+Step 5: Implement ConcreteFoodFactory
+
+Implements FoodFactory.
+
+Logic:
+
+If type = "Pizza" → return new Pizza(foodType, size).
+
+If type = "Burger" → return new Burger(foodType, extraCheese).
+
+If type = "Salad" → return new Salad(foodType, dressingStyle).
+
+Use VegFood / NonVegFood internally to decide Veg or Non-Veg.
+
+Step 6: Create FoodService Class
+
+Attribute: FoodFactory foodFactory (inject via @Autowired).
+
+Method:
+
+String orderFood(String type, String foodType);
+
+
+Uses factory to create food and return its description.
+
+Step 7: Configure AppConfig
+
+Annotate with @Configuration and @ComponentScan.
+
+Register beans for all classes (Pizza, Burger, Salad, ConcreteFoodFactory, FoodService).
+
+Step 8: Create Main Class (FoodApp)
+
+Initialize Spring context using AnnotationConfigApplicationContext.
+
+Get FoodService bean.
+
+Take sample user input (or hardcode) → Example: "Pizza", "Veg".
+
+Call orderFood() and print the returned description.
+
+✅ Flow Recap:
+Main → FoodService → FoodFactory → Specific Food (Pizza/Burger/Salad) → Output description
+
+
+Task02:Gadget Production System
+===============================
+
+
+Step 1: Define the Gadget Interface
+
+Create an interface Gadget with method:
+
+String getDetails();
+
+
+All gadgets (Smartphone, Laptop, Tablet) will implement this.
+
+Step 2: Create Concrete Gadget Classes
+
+Smartphone Class
+
+Attributes: osType (Android/iOS/Windows), numCameras (int).
+
+Implements Gadget.
+
+getDetails() returns description like:
+"Smartphone with Android OS and 3 Cameras".
+
+Laptop Class
+
+Attributes: osType, ramSize (e.g., 8GB, 16GB).
+
+Implements Gadget.
+
+getDetails() returns:
+"Laptop with Windows OS and 16GB RAM".
+
+Tablet Class
+
+Attributes: osType, screenSize (e.g., 10 inches).
+
+Implements Gadget.
+
+getDetails() returns:
+"Tablet with iOS OS and 10-inch Screen".
+
+Step 3: Define OperatingSystem Interface
+
+Create interface OperatingSystem with method:
+
+String getOSType();
+
+
+Implementations:
+
+AndroidOS → returns "Android".
+
+WindowsOS → returns "Windows".
+
+IOS → returns "iOS".
+
+Step 4: Create GadgetFactory Interface
+
+Method signature:
+
+Gadget createGadget(String type, String osType);
+
+
+This abstracts gadget creation.
+
+Step 5: Implement ConcreteGadgetFactory
+
+Implements GadgetFactory.
+
+Logic:
+
+If type = "Smartphone" → return new Smartphone(osType, numCameras).
+
+If type = "Laptop" → return new Laptop(osType, ramSize).
+
+If type = "Tablet" → return new Tablet(osType, screenSize).
+
+Internally uses OperatingSystem classes to fetch OS info.
+
+Step 6: Create GadgetService Class
+
+Attribute: GadgetFactory gadgetFactory (inject via Spring).
+
+Method:
+
+String produceGadget(String type, String osType);
+
+
+Uses factory to create gadget and return its description.
+
+Step 7: Configure AppConfig
+
+Use @Configuration and @ComponentScan.
+
+Register beans for:
+
+Smartphone, Laptop, Tablet
+
+AndroidOS, WindowsOS, IOS
+
+ConcreteGadgetFactory, GadgetService
+
+Step 8: Create Main Class (GadgetApp)
+
+Load Spring context using AnnotationConfigApplicationContext.
+
+Get GadgetService bean.
+
+Example test cases:
+
+produceGadget("Smartphone", "Android") → "Smartphone with Android OS and 3 Cameras".
+
+produceGadget("Laptop", "Windows") → "Laptop with Windows OS and 16GB RAM".
+
+produceGadget("Tablet", "iOS") → "Tablet with iOS OS and 10-inch Screen".
+
+✅ Flow Recap:
+Main → GadgetService → GadgetFactory → Specific Gadget (Smartphone/Laptop/Tablet) → OS Type → Output gadget details

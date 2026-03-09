@@ -1,0 +1,71 @@
+ Java + Spring Framework Coding Exercise: Cake Order System
+________________________________________________________________
+Problem Statement
+-------------------------
+You are required to design a Cake ordering system using Java and Spring Framework (Core). 
+The system should allow customers to place cake orders with various 
+customization options like flavour, quantity, shape, and a message on the cake.
+
+Requirements
+--------------------------
+Abstract Class Cake
+_________________________________
+> Create an abstract class Cake with the following:
+
+Properties:
+--------------------------
+> cake_Flavour (String)
+> cake_quantity (float)
+> cake_price (static float, default 300)
+> shape_of_cake (String)
+
+Constructors:
+--------------------------
+> No-arg constructor: initializes default values.
+> Parameterized constructor: accepts flavour, quantity, and shape.
+
+> Getters and Setters for all fields.
+
+> A method getOrder() that returns a formatted string with cake details
+  and total price (cake_price * quantity).
+
+Class OrderCake extending Cake
+_________________________________
+> Additional property: message_on_cake (String)
+
+Overloaded constructors:
+----------------------------
+|- One matching Cake’s constructor.
+|- One that includes the message_on_cake parameter.
+|- Override getOrder() to include the message if present.
+
+Spring XML Configuration
+_________________________________
+Configure the following beans in an XML file:
+
+> ordercake (default constructor)
+> ordercake1 (constructor with flavour, quantity, shape)
+> ordercake2 (constructor with all parameters including message)
+
+Main Class: CakeOrderApplication
+__________________________________
+Load the Spring context from application-context.xml.
+
+|- Retrieve all three beans and print their getOrder() output.
+
+Expected Output
+____________________________________
+When the application runs, it should print the details of all 3 orders 
+(with or without message) along with the total price based on quantity.
+
+Sample (approximate) output:
+------------------------------
+Cake [cake_Flavour=vanilla, cake_quantity=1.0,
+shape_of_cake=square is ready !! kindly pay Rs.300.0]
+------------------------------
+Cake [cake_Flavour=vanilla, cake_quantity=2.0, 
+shape_of_cake=round is ready !! kindly pay Rs.600.0]
+------------------------------
+OrderCake [message_on_cake=Happy birthday, 
+order =Cake [cake_Flavour=vanilla, cake_quantity=2.0, shape_of_cake=round is ready
+!! kindly pay Rs.600.0]]

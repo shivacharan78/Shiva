@@ -1,0 +1,100 @@
+Task 1: Product Catalog Search System using @Query
+🏢 Scenario:
+An e-commerce company wants to implement advanced filtering on products. You’ll use @Query in Spring Data JPA to enable complex product search criteria.
+
+✅ Step-Wise Instructions:
+Step 1: Project Setup
+Create a Spring Boot project with:
+
+spring-boot-starter-data-jpa
+
+spring-boot-starter
+
+MySQL or H2 database
+
+Step 2: Create Product Entity
+Fields:
+id, name, price, category, rating, available, createdDate
+
+Step 3: Define Repository with 5 Custom @Query Methods
+Find products by price range
+
+Input: minPrice, maxPrice
+
+Output: All products between those prices.
+
+Search products by name (case-insensitive)
+
+Input: Partial name
+
+Output: All products with name containing the keyword.
+
+Filter by category and availability
+
+Input: Category, availability flag
+
+Output: Products matching both.
+
+Get top-rated products (rating > 4)
+
+Output: List of popular products.
+
+Find products added after a specific date
+
+Input: Created date
+
+Output: New arrivals.
+
+Step 4: Populate Sample Products
+Insert 10–15 products of different categories and prices.
+
+Step 5: Test Queries
+Use CommandLineRunner to test queries and display results in the console.
+
+
+
+🏥 Task 3: Patient Appointment Tracker using @Query
+🏢 Scenario:
+A hospital wants to query patients based on doctors, appointment status, and visit dates. You will implement this with custom query methods.
+
+✅ Step-Wise Instructions:
+Step 1: Setup Spring Boot Project
+Add JPA and a relational DB (H2 or MySQL)
+
+Step 2: Define Patient Entity
+Fields:
+id, name, doctorName, appointmentDate, visited (boolean), disease, gender
+
+Step 3: Create Repository with 5 @Query Methods
+Find patients with upcoming appointments
+
+Input: current date
+
+Output: All patients with future appointments.
+
+List patients assigned to a particular doctor
+
+Input: doctor name
+
+Output: All patients of that doctor.
+
+Get patients who haven’t visited yet
+
+Filter by visited = false.
+
+Search patients by disease (partial match)
+
+Input: part of disease name
+
+Output: All matching patients.
+
+Get gender-wise patient count
+
+Output: Count grouped by gender (use GROUP BY).
+
+Step 4: Insert Sample Data
+Add records with various doctors, diseases, and visit statuses.
+
+Step 5: Test and Display Results
+Use console-based interaction or hardcoded input to trigger each query.
+

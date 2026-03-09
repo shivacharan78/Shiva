@@ -1,0 +1,59 @@
+Task Title: Product Inventory Management System
+🎯 Objective:
+Build a Spring Boot layered application (without database) to manage a list of products in memory. Allow adding new products, viewing all, and calculating the total value of inventory.
+
+✅ Features:
+Add a new product (ID, Name, Quantity, Price per unit).
+
+View all products.
+
+Calculate total inventory value (quantity × price for all products).
+
+🧱 Application Layers:
+1. Model Layer (Entity)
+Define a Product class with fields:
+
+Product ID
+
+Name
+
+Quantity
+
+Price
+
+2. Repository Layer (Simulated)
+No actual DB; use List<Product> or Map<Long, Product> to store data in memory.
+
+Simulate CRUD operations.
+
+3. Service Layer
+Business logic:
+
+Add a product to the in-memory list.
+
+Fetch all products.
+
+Calculate total inventory value.
+
+4. Controller Layer
+REST endpoints (or console input if preferred):
+
+/products/add → Add product
+
+/products/all → View all products
+
+/products/value → Show total inventory value
+
+🧪 Sample Use Case:
+Add Product A: 10 units × ₹100 = ₹1000
+
+Add Product B: 5 units × ₹200 = ₹1000
+
+Total Inventory Value: ₹2000
+
+🧰 Tech Stack:
+Spring Boot
+
+Spring Web
+
+No Database (only Java collections)

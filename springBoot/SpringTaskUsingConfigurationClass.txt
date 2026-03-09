@@ -1,0 +1,155 @@
+Task 1: Library and Book Injection
+Objective:
+Create a Spring Core application where a Library class contains a single Book object injected via setter injection.
+
+Requirements:
+
+Book class:
+
+String title
+
+String author
+
+Setter methods.
+
+Library class:
+
+Book book
+
+Setter method for book.
+
+showBookDetails() method to display book info.
+
+Configuration:
+
+Use @Configuration and @Bean to define both beans.
+
+Main Class:
+
+Load context, get Library bean, and display book details.
+
+Task 2: Car and Engine Injection
+Objective:
+Create a Spring Core application where a Car object has a single Engine injected.
+
+Requirements:
+
+Engine class:
+
+String type
+
+int horsepower
+
+Setter methods.
+
+Car class:
+
+Engine engine
+
+Setter method for engine.
+
+displayCarInfo() method to print details.
+
+Configuration:
+
+Java-based config with @Bean methods for Car and Engine.
+
+Main Class:
+
+Load context and display car information.
+
+Task 3: Student and Address Injection
+Objective:
+Build a Spring Core application where a Student has an Address injected.
+
+Requirements:
+
+Address class:
+
+String city
+
+String state
+
+Setter methods.
+
+Student class:
+
+String name
+
+Address address
+
+Setter methods.
+
+showStudentDetails() to print details.
+
+Configuration:
+
+Use AppConfig with @Bean definitions.
+
+Main Class:
+
+Retrieve Student bean and show details.
+
+Task 4: Company and CEO Injection
+Objective:
+A Company class has a single CEO object injected via setter injection.
+
+Requirements:
+
+CEO class:
+
+String name
+
+int experienceYears
+
+Setter methods.
+
+Company class:
+
+String companyName
+
+CEO ceo
+
+Setter methods.
+
+displayCompanyInfo() to print.
+
+Configuration:
+
+Java-based Spring config.
+
+Main Class:
+
+Load context, get Company bean, print details.
+
+Task 5: University and Chancellor Injection
+Objective:
+A University class contains a single Chancellor object.
+
+Requirements:
+
+Chancellor class:
+
+String name
+
+String qualification
+
+Setter methods.
+
+University class:
+
+String universityName
+
+Chancellor chancellor
+
+Setter methods.
+
+displayUniversityDetails() method.
+
+Configuration:
+
+Use @Configuration and @Bean.
+
+Main Class:
+
+Retrieve University bean and print details.

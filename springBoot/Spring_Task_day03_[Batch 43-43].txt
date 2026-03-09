@@ -1,0 +1,81 @@
+📘 Java Spring Core — Student Marks Calculator using Spring Beans
+__________________________________________________________________________________
+🎯 Objective:
+---------------------------
+Create a Spring-based application to calculate the average marks of a student
+based on different subjects using Spring Core IOC (Inversion of Control) with XML-based configuration.
+
+✅ Requirements
+---------------------------
+📁 1. Packages to be Created
+
+> com.implimentation.beans —  for Java class (Bean and main)
+> com.configuration.commons — for application-context.xml file (Spring configuration)
+
+🧱 2. Java Class - Student
+_______________________________
+Create a class Student that represents a student and stores:
+
+|- String student_name
+|- int student_rollNo
+|- int math_Marks
+|- int physics_Marks
+|- float chemistry_marks
+|- double english_marks
+|- double physicalEdu_marks
+|- boolean isExamAttended
+|- double average (calculated)
+
+➕ Behavior:
+------------------------
+> A method getResult():
+  |- If the student attended the exam, calculates and returns the average of 5 subjects.
+  |- If not attended, prints "Exam not attended!!" and returns 0.
+
+> A method examAttended() to check the attendance.
+  |- Standard getters, setters, and toString() method.
+
+🧾 3. Spring Bean Configuration - application-context.xml
+------------------------------------------------------------
+Create a Spring bean with id result and provide values for all student properties:
+|- first complete it by using setter injection 
+|- after that complete the same task by using constructor injection
+
+🖥️ 4. Main Class - StudentMarksUser
+____________________________________________
+Load Spring container using:
+ApplicationContext context = new ClassPathXmlApplicationContext("Path");
+Retrieve the bean using:
+|- get the object and call the method as well as toString()
+
+✅ Expected Output
+_____________________________________________
+If the student attended the exam:
+
+Student [student_name=abc, student_rollNo=101, math_Marks=80, physics_Marks=90, chemistry_marks=70.2, english_marks=70.5, physicalEdu_marks=90.5, average=82.24, isExamAttended=true]
+
+
+If not attended:
+Student [student_name=abc, ... , average=0.0, isExamAttended=false]
+
+📦 Project Structure
+_________________________________________________
+src/
+├── com/
+│   ├── implimentation/
+│   │   ├── beans/
+│   │   │   ├── Student.java
+│   │   │   ├── StudentMarksUser.java
+│
+├── com/
+│   └── configuration/
+│       └── commons/
+│           └── application-context.xml
+_________________________________________________
+📄 Submission Checklist
+✅ Student.java
+
+✅ StudentMarksUser.java
+
+✅ application-context.xml
+

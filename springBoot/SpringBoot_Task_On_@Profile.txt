@@ -1,0 +1,136 @@
+Q1: Injecting Multiple Payment Services using Profiles
+🎯 Problem Restated
+
+You need a payment system with Credit Card, PayPal, and UPI services. Instead of using @Qualifier to select a bean,
+you should use Spring Profiles so that only the payment service for the active profile gets loaded.
+
+🔹 Step 1: Define a Common Interface
+
+Create a PaymentService interface with a method processPayment().
+
+This will be implemented by different payment classes.
+
+🔹 Step 2: Create Implementations with Profiles
+
+Create three classes:
+
+CreditCardPaymentService (profile: creditcard)
+
+PayPalPaymentService (profile: paypal)
+
+UPIPaymentService (profile: upi)
+
+Annotate each class with @Profile("...") so Spring only loads the bean for the active profile.
+
+🔹 Step 3: Create a PaymentProcessor Class
+
+Define a PaymentProcessor component that depends on PaymentService.
+
+Since only one bean will be active per profile, Spring automatically injects the correct implementation.
+
+This avoids the need for @Qualifier.
+
+🔹 Step 4: Configure Spring with Java Config
+
+Create an AppConfig class using @Configuration and @ComponentScan so Spring can find all components.
+
+No XML configuration is required.
+
+🔹 Step 5: Activate a Profile
+
+You can activate a profile in multiple ways:
+
+In application.properties:
+
+Set spring.profiles.active=paypal (or creditcard / upi).
+
+Using command line while running:
+
+mvn spring-boot:run -Dspring-boot.run.profiles=upi
+
+Using environment variable:
+
+SPRING_PROFILES_ACTIVE=creditcard
+
+🔹 Step 6: Run and Verify
+
+Run the application with different active profiles.
+
+Only one payment service bean will be loaded at a time.
+
+Example outputs:
+
+If profile is creditcard → processes payment via Credit Card.
+
+If profile is paypal → processes payment via PayPal.
+
+If profile is upi → processes payment via UPI.
+
+
+Q2: Vehicle Service Selection using Profiles
+🎯 Problem Restated
+
+You are building a vehicle maintenance system where Car, Bike, and Truck have different maintenance processes.
+Instead of selecting the correct service with @Qualifier, you want to use Spring Profiles so that only the service for the active profile is loaded.
+
+🔹 Step 1: Define the Common Interface
+
+Create a VehicleService interface with a method performService().
+
+Each vehicle type will implement this interface differently.
+
+🔹 Step 2: Create Profile-Specific Implementations
+
+Create three classes that implement VehicleService:
+
+CarService → annotated with @Profile("car").
+
+BikeService → annotated with @Profile("bike").
+
+TruckService → annotated with @Profile("truck").
+
+👉 Only one implementation is active at a time, depending on the profile.
+
+🔹 Step 3: Create ServiceCenter
+
+Define a ServiceCenter component that depends on VehicleService.
+
+Since only one bean is active per profile, Spring will automatically inject the right service.
+
+This eliminates the need for @Qualifier.
+
+🔹 Step 4: Configure with Java Config
+
+Create an AppConfig class using @Configuration and @ComponentScan.
+
+This allows Spring to discover and register all services automatically.
+
+🔹 Step 5: Activate a Profile
+
+Choose which vehicle service to use by setting the profile:
+
+application.properties
+
+spring.profiles.active=car (or bike, or truck).
+
+Command-line argument
+
+mvn spring-boot:run -Dspring-boot.run.profiles=bike.
+
+Environment variable
+
+SPRING_PROFILES_ACTIVE=truck.
+
+🔹 Step 6: Run and Verify
+
+Start the application with a given profile.
+
+Call performService() through the ServiceCenter.
+
+Expected results:
+
+If profile is car → Car service process runs.
+
+If profile is bike → Bike service process runs.
+
+If profile is truck → Truck service process runs.

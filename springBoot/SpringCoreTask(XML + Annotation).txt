@@ -1,0 +1,185 @@
+More Difficult Spring XML + Annotation Tasks
+-------------------------------------------------------------------------------
+Task 1 – Employee Salary Slip Generator (XML + Annotation)
+============================================================================
+Generate a detailed salary slip using both XML-defined employee details and annotation-based calculation service.
+
+Requirements:
+
+Employee Bean (XML)
+
+Fields: id (int), name (String), basicSalary (double), hra (double), da (double), taxPercentage (double)
+
+Preload sample values in applicationContext.xml.
+
+SalarySlipService (Annotation)
+
+Annotate with @Component.
+
+Inject Employee bean using @Autowired.
+
+Method generateSlip() should:
+
+Calculate grossSalary = basicSalary + hra + da
+
+Calculate taxAmount = (grossSalary * taxPercentage) / 100
+
+Calculate netSalary = grossSalary - taxAmount
+
+Print a well-formatted salary slip.
+
+Expected Output:
+
+Salary Slip for John
+Gross Salary: 50000
+Tax Deducted: 5000
+Net Salary: 45000
+---------------------------------------------------------------------------------------------------------------------------------------
+Task 2 – Laptop Configuration Printer (XML + Annotation)
+
+ Demonstrate hybrid Spring configuration by defining a bean in XML and using annotations to inject it into a service for printing details.
+
+Requirements:
+
+XML Bean: Laptop
+
+Fields:
+
+brand (String)
+
+processor (String)
+
+ram (String)
+
+Set values in applicationContext.xml, e.g.:
+
+brand = "Dell"
+
+processor = "Intel i7"
+
+ram = "16GB"
+
+Annotation Class: LaptopService
+
+Annotated with @Component
+
+Inject Laptop using @Autowired
+
+Method printLaptopDetails() should print:
+
+Laptop Brand: Dell
+Processor: Intel i7
+RAM: 16GB
+Main App: Load Spring context, get LaptopService bean, and call printLaptopDetails().
+
+Expected Output (Sample)
+
+Laptop Brand: Dell
+Processor: Intel i7
+RAM: 16GB
+
+---------------------------------------------------------------------------------------
+Task 3 – Order Invoice with Multiple Services
+--------------------------------------------------------------
+Generate an invoice using multiple XML beans for product and tax calculation, and annotation for invoice formatting.
+
+Requirements:
+
+Product Bean (XML)
+
+Fields: name (String), price (double), quantity (int)
+
+TaxCalculator Bean (XML)
+
+Method: calculateTax(double amount) → returns 18% of amount.
+
+InvoiceService (Annotation)
+
+Annotate with @Component.
+
+Inject both Product and TaxCalculator beans using @Autowired.
+
+Method printInvoice() should:
+
+Calculate totalPrice = price * quantity
+
+Add tax from TaxCalculator
+
+Print invoice details.
+
+Expected Output:
+
+Invoice:
+Product: Laptop
+Quantity: 2
+Total (before tax): 100000
+Tax: 18000
+Final Amount: 118000
+--------------------------------------------------------------------------------------------------------------------
+Task 4 –  Employee Performance Appraisal (XML + Annotation)
+----------
+Calculate an employee’s new salary after applying a performance-based increment.
+
+📋 Requirements:
+
+Employee Bean (XML Configuration)
+
+Fields: id (int), name (String), currentSalary (double), performanceRating (String: "A", "B", "C").
+
+Define the bean in applicationContext.xml with sample values.
+
+AppraisalService (Annotation Configuration)
+
+Annotate with @Component.
+
+Inject the Employee bean using @Autowired.
+
+Method calculateIncrement() should:
+
+If rating = "A", increment = 20% of current salary
+
+If rating = "B", increment = 10%
+
+If rating = "C", increment = 5%
+
+Method printAppraisal() should print the old salary, increment amount, and new salary.
+
+✅ Expected Output:
+
+Employee: John  
+Current Salary: 50000  
+Increment: 10000  
+New Salary: 60000
+----------------------------------------------------------------------------------------------------------------------
+Task 5 – Bank Transaction Processor (XML + Annotation + Collections)
+------------------------------------------------------
+Process a list of transactions and generate a summary.
+
+Requirements:
+
+Transaction Bean (XML)
+
+Fields: id (int), type (String), amount (double)
+
+Create a list of Transaction beans in XML.
+
+TransactionService (Annotation)
+
+Annotate with @Component.
+
+Inject list of transactions.
+
+Methods:
+
+getTotalCredits() → sum of all transactions with type "CREDIT"
+
+getTotalDebits() → sum of all transactions with type "DEBIT"
+
+printSummary() → print both totals.
+
+Expected Output:
+
+Total Credits: 12000
+Total Debits: 8000
+Net Balance: 4000
+---------------------------------------------------------------------------------------------------------

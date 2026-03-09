@@ -1,0 +1,142 @@
+Student Records Management System (CRUD + Paging & Sorting)
+🎯 Objective
+Build a Spring Boot MVC application to manage student records with CRUD operations, pagination, and sorting.
+
+✅ Requirements
+
+Technologies
+
+Spring Boot 3.1.5
+
+Spring Web (MVC)
+
+Spring Data JPA
+
+Thymeleaf or JSP
+
+MySQL / PostgreSQL
+
+Lombok (optional)
+
+Functionalities
+
+Add Student
+
+Fields: Roll No, Name, Department, Semester, GPA, Email.
+
+View Students List (Paginated, default 10 per page).
+
+Sortable columns: Name, GPA, Department, Semester.
+
+Edit Student
+
+Delete Student
+
+Search by Name or Department.
+
+Endpoints
+| Method | Endpoint | Description |
+|--------|------------------------|-----------------------------------|
+| GET | /students | List students with paging & sorting |
+| GET | /students/new | Show add form |
+| POST | /students | Save student |
+| GET | /students/edit/{id} | Show edit form |
+| POST | /students/{id} | Update student |
+| GET | /students/delete/{id} | Delete student |
+
+2. Product Catalog Management System (CRUD + Paging & Sorting)
+🎯 Objective
+Create a Spring Boot MVC application to manage products in a catalog with CRUD, pagination, and sorting.
+
+✅ Requirements
+
+Fields: Product ID, Name, Category, Price, Stock Quantity, Created Date.
+
+Paginated product listing (default 8 per page).
+
+Sortable by: Name, Price, Stock, Created Date.
+
+Search by Product Name or Category.
+
+Endpoints
+
+Method	Endpoint	Description
+GET	/products	List products with paging/sorting
+GET	/products/new	Show add form
+POST	/products	Save product
+GET	/products/edit/{id}	Show edit form
+POST	/products/{id}	Update product
+GET	/products/delete/{id}	Delete product
+
+3. Library Book Management System (CRUD + Paging & Sorting)
+🎯 Objective
+Develop a Spring Boot MVC application to manage library books with CRUD, pagination, and sorting features.
+
+✅ Requirements
+
+Fields: Book ID, Title, Author, Genre, Publication Year, Availability.
+
+Paginated book listing (default 6 per page).
+
+Sortable by: Title, Author, Year, Genre.
+
+Search by Title or Author.
+
+Endpoints
+
+Method	Endpoint	Description
+GET	/books	List books with paging/sorting
+GET	/books/new	Show add form
+POST	/books	Save book
+GET	/books/edit/{id}	Show edit form
+POST	/books/{id}	Update book
+GET	/books/delete/{id}	Delete book
+
+4. Customer Management System (CRUD + Paging & Sorting)
+🎯 Objective
+Build a Spring Boot MVC application to manage customer records with CRUD, pagination, and sorting.
+
+✅ Requirements
+
+Fields: Customer ID, Name, Email, Phone, City, Registration Date.
+
+Paginated customer list (default 7 per page).
+
+Sortable by: Name, City, Registration Date.
+
+Search by Name or City.
+
+Endpoints
+
+Method	Endpoint	Description
+GET	/customers	List customers with paging/sorting
+GET	/customers/new	Show add form
+POST	/customers	Save customer
+GET	/customers/edit/{id}	Show edit form
+POST	/customers/{id}	Update customer
+GET	/customers/delete/{id}	Delete customer
+
+5. Order Management System (CRUD + Paging & Sorting)
+🎯 Objective
+Develop a Spring Boot MVC application to manage orders with CRUD, pagination, and sorting.
+
+✅ Requirements
+
+Fields: Order ID, Customer Name, Product Name, Quantity, Order Date, Status.
+
+Paginated orders list (default 10 per page).
+
+Sortable by: Order Date, Customer Name, Status.
+
+Search by Customer Name or Product Name.
+
+Endpoints
+
+Method	Endpoint	Description
+GET	/orders	List orders with paging/sorting
+GET	/orders/new	Show add form
+POST	/orders	Save order
+GET	/orders/edit/{id}	Show edit form
+POST	/orders/{id}	Update order
+GET	/orders/delete/{id}	Delete order
+
