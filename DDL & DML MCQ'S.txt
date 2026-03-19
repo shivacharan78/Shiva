@@ -1,0 +1,311 @@
+                                  SQL MCQ'S
+                                ============
+
+
+
+1.DDL statements are used for which of the following database objects ?
+
+a) Tables
+
+b) views    
+
+c) indexes   
+
+d) All of the above
+	
+
+Answer: DDL works on tables, views, indexes, schemas, etc.
+
+------------------------------------------------------------------------------------------------------
+2.What does the TRUNCATE command do in SQLSERVER?
+
+a) Deletes table and its structure
+
+b) Removes all rows but keeps the structure
+
+c) Deletes selected rows with WHERE clause
+
+d) Drops only column data
+
+
+Answer: b) Removes all rows but keeps the structure
+👉 TRUNCATE deletes all records, structure remains.
+
+------------------------------------------------------------------------------------------------------
+3.Which statement is true about ALTER TABLE?
+
+a) It can be used to delete records from a table
+
+b) It can add, drop, or modify table columns
+
+c) It is used only for constraint creation
+
+d) It cannot modify column data types
+
+
+Answer: b
+
+------------------------------------------------------------------------------------------------------
+4.The DDL command to remove a table including its structure is:
+
+a) TRUNCATE
+
+b) DELETE
+
+c) DROP
+
+d) CLEAR
+
+
+Answer: c
+
+------------------------------------------------------------------------------------------------------
+5.What is the full form of DDL command
+
+a) Data deleting language
+
+b) Data definition language
+
+c) Data delegating language         
+
+d) Dummy data language
+
+
+Answer: b
+ 
+
+------------------------------------------------------------------------------------------------------
+6.Which of the following is a DML statement?
+
+a) CREATE TABLE
+
+b) INSERT INTO
+
+c) DROP TABLE
+
+d) ALTER TABLE
+
+
+Answer:- b
+
+------------------------------------------------------------------------------------------------------
+7.UPDATE emp SET salary = salary * 1.1; belongs to which category?
+
+a) DDL
+
+b) DCL
+
+c) DML
+
+d) TCL
+
+
+Answer: c
+
+------------------------------------------------------------------------------------------------------
+8.Which DML statement is used to remove specific rows from a table?
+
+a) DELETE
+
+b) TRUNCATE
+
+c) DROP
+
+d) ALTER
+
+
+Answer: a) DELETE
+👉 Uses WHERE clause.
+
+------------------------------------------------------------------------------------------------------
+9.Which of the following DML commands cannot use a WHERE clause?
+
+a) DELETE
+
+b) INSERT
+
+c) UPDATE
+
+d) None of the above
+
+
+Answer: b
+
+------------------------------------------------------------------------------------------------------
+10.Which command is used to change the structure of an existing table?
+
+a) CHANGE
+
+b) ALTER
+
+c) MODIFY
+
+d) UPDATE
+
+
+Answer: b
+
+------------------------------------------------------------------------------------------------------
+11.What is the main difference between DROP and TRUNCATE commands?
+
+a) DROP removes only data, TRUNCATE removes structure
+
+b) DROP removes structure and data, TRUNCATE removes only data
+
+c) DROP can be rolled back, TRUNCATE cannot
+
+d) TRUNCATE is slower than DROP
+
+
+Answer: b
+
+------------------------------------------------------------------------------------------------------
+12.Which of the following is a DDL command in SQL ?
+
+a)SELECT
+
+b)INSERT
+
+c)CREATE
+
+d)UPDATE
+
+
+Answer: c
+------------------------------------------------------------------------------------------------------
+13.Which of the following is a DML command ?
+
+a)DELETE
+
+b)CREATE
+
+c)DROP 
+
+d)ALTER
+
+
+Answer: d
+------------------------------------------------------------------------------------------------------
+14.Which command is used to modify existing data in a table ?
+
+a)CHANGE
+
+b)MODIFY
+
+c)UPDATE
+
+d)ALTER
+
+Answer: c
+
+------------------------------------------------------------------------------------------------------
+15.In SQL, which of the following is not a data Manipulation Language Commands?
+
+a) Delete	
+
+b) Truncate	
+
+c) Update	
+
+d) Merge
+
+
+Answer: b
+------------------------------------------------------------------------------------------------------
+16.Which of the following is not a DDL command?
+
+a) CREATE
+
+b) DROP
+
+c) TRUNCATE
+
+d) UPDATE
+
+
+Answer: d
+------------------------------------------------------------------------------------------------------
+17.Which statement is used to retrieve data  from a table ?
+
+a)SELECT
+
+b)GET
+
+c)FETCH
+
+d)SHOW
+
+
+Answer: a
+-----------------------------------------------------------------------------------------------------
+18.What is Functionality of TRUNCATE Command?
+
+a) It Deletes All Records and Structure Temporarily 
+
+b) It Deletes All Records and Structure Permanently
+
+c) It Deletes Specified Records Temporarily	      
+
+d) It Deletes All Records Permanently
+
+
+Answer: d) It Deletes All Records Permanently
+👉 Structure remains, data cannot be rolled back.
+------------------------------------------------------------------------------------------------------
+19.Consider the following Instructor table with the following 4 columns
+
+---> Id
+---> Name
+---> City
+---> Country
+
+Which of the following SQL query correctly inserts a new record in
+instructor table with Id = 5 and Name = 'SURYA'
+
+a) Insert into Instructor values (5, 'SURYA');
+
+b) Insert into Instructor values (5, SURYA);
+
+c) Insert into Instructor values ('5', 'SURYA');
+
+d) Insert into Instructor (Id, Name) values (5, 'SURYA');
+
+
+Answer: d
+
+------------------------------------------------------------------------------------------------------
+20.How can you change LastName "Thomas" to "Michel" in the Users table?
+
+a) UPDATE User SET LastName = 'Thomas' INTO LastName = 'Michel';
+
+b) MODIFY Users SET LastName = 'Michel' WHERE LastName = 'Thomas';
+
+c) MODIFY Users SET LastName = 'Thomas' INTO LastName = 'Michel';
+
+d) UPDATE Users SET LastName = 'Michel' WHERE LastName = 'Thomas';
+
+
+Answer:d
+------------------------------------------------------------------------------------------------------
+21.The command to eliminate a table from a database
+
+a) REMOVE TABLE CUSTOMERS;
+
+b) DELETE TABLE CUSTOMERS;
+
+c) DROP TABLE CUSTOMERS;
+
+d) UPDATE TABLE CUSTOMERS;
+
+
+Answer: c
+------------------------------------------------------------------------------------------------------
+📌 Quick Memory Tip
+
+DDL → CREATE, ALTER, DROP, TRUNCATE
+
+DML → INSERT, UPDATE, DELETE, MERGE
+
+SELECT → DQL
+
+COMMIT / ROLLBACK → TCL

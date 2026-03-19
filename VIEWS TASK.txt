@@ -1,0 +1,147 @@
+                                 VIEWS
+                               =========
+
+
+1.What is view? View store data or not? What are different types 
+  of views ?
+
+
+2.Create a view from emp table with following columns EMPNO,
+  ENAME, DEPTNO After creating the view insert the records into
+  view through base table?
+
+
+3.Create view from emp table and store only 10th department
+  details?
+
+
+4.Create a view for department wise maximum salary ?
+
+
+5.What is complex view ? Create a complex view from the following 
+  two tables ?Can you perform DML operations through complex view 
+  to base table possible or not possible? 
+
+
+SQL>create table test1(name varchar(10));
+SQL>create table test2(sub varchar(10));
+
+
+
+6.What are the difference b/w simple view and complex view?
+
+
+
+------------------------------------------------------------------------------------------------------
+                         VIEWS
+                      ============
+
+   
+    View is database object which is used to provide table security.
+Generally views are created from tables. Those tables also called as
+base tables.
+
+    Generally database administrator(DBA) only creates views from tables
+and then only those views are given to number of users. Then only 
+those users are allowed to view portion of the data through view to
+base table.
+ 
+   Generally view does not store any data. That's why view is also 
+called as virtual table or window of table.
+
+NOTE:-view stores select statement only.
+
+     Generally views are created from base tables. Based on base tables
+views are categorized into 2 views. These are
+
+1)simple view
+2)complex view (or) join view
+
+   simple view is a view which is created from only one base table
+where as complex view is a view which is created from multiple base
+tables.
+
+
+syntax:-
+=======
+create view viewname
+as
+select * from tablename where condition;
+
+
+eg1:-
+====
+create  view v1 
+as
+select * from emp where deptno=10;
+
+SQL>select * from v1;
+SQL>insert into v1(empno,ename,deptno)values(1,'subbarao',30);
+SQL>select * from emp;
+
+
+  generally in all relational databases simplifying complex querys
+purpose we can use views.in this case regularly used complex queries
+are putting in a view & whenever necessary we are selecting view by
+using select * from viewname.
+  
+  in sql server when a view having functions or expressions then we must
+create aliasname for those functions or expressions otherwise sql server
+returns an error.
+
+EX:-
+===
+create view v1
+as
+select deptno,max(sal) from emp
+group by deptno;
+
+
+Error: Create View or Function failed because no column name was specified for column 2.
+
+
+solution:-
+========
+create view v1
+as
+select deptno,max(sal) as maxsal
+from emp
+group by deptno;
+
+SQL>select * from v1;
+
+
+
+2)complex view (or) join view
+==============================
+  a view which is created from multiple tables is also called as join
+view or complex view.
+  
+  Generally in all relational databases we can not perform DML 
+operations through complex view to base tables.
+
+eg:-
+===
+SQL>create table test1(name varchar(10));
+SQL>create table test2(sub varchar(10));
+
+create view v10
+as
+select name,sub
+from test1,test2;
+
+insert into v10 values('subbarao','oracle');
+ERROR:View or function 'v10' is not updatable because the modification affects multiple base tables.
+
+
+
+Uses of Views
+=============
+     in all relational databases views are used in following 2
+scenarios. these are
+
+1.providing table level security
+2.for simplifying complex queries
+
+
+

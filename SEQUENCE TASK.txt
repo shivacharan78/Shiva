@@ -1,0 +1,106 @@
+                                SEQUENCE
+                              ===========
+
+     Sequence is an database object which is used to generates 
+Sequence of numbers automatically. 
+
+      Generally sequences are used to generates Primary key values automatically. 
+Generally sequence is an independent database object.That's why Once a sequence 
+has been created then number of users simultaneously access that sequence.
+
+   in sql server if we want to generate first sequence number then
+we must use next value pseudo column.
+
+syntax:-
+=======
+select next value for sequencename;
+
+
+
+1.What is Sequence ? What is main purpose of Sequence?
+
+
+
+2.What is auto increment concept?
+
+
+
+3.Create a sequence S1,Sequence stat with 5 and generate values
+  upto 10
+
+
+
+ *
+***Generating primary key values automatically(Auto-increment):-
+ * ===========================================================
+
+     In all relational databases generating primary key values automatically 
+is called auto-increment concept.in oracle we are implementing auto-increment
+concept by using sequence database object.
+
+
+
+
+4.Genarate the primary key values for the following column sno
+  by using sequence.
+
+
+---->create a sequence s2 first starting with 1
+
+---->create the table test12 table as shown in below
+
+SQL>create table test12(sno int primary key,name varchar(10));
+
+---->insert into test12 values(next value for s3,'ANUSHKA')
+
+---->only we are providing the values to name column.by using
+     sequence pseudo column NEXT VALUE we are generating values 
+     automatically to SNO column.
+
+
+---->after inserting the records add RNO column
+
+---->alter table test12 add rno int;
+
+SNO      NAME        RNO
+---     ------     --------
+1        ANUSHKA     
+2        SURYA  
+3        GOWTHAM       
+4        KIRAN  
+
+---->create one more sequence s3 and stating value is 73     
+
+---->by using one update command with sequence pseudo 
+     column(next value) generate the output as follows
+
+SNO      NAME       RNO
+---     ------     --------
+1        ANUSHKA     73
+2        SURYA       74
+3        GOWTHAM     75
+4        KIRAN       76
+
+
+
+4.Use IDENTITY concept for ACCNO column generate the ACCOUNT NUMBERS automatically
+
+syntax:-
+=======
+
+columnname datatype identity(seed,increment)
+
+--->Create table BANK123 with ACCNO column by using above identity syntax
+    and NAME,BAL columns
+--->Insert the values only NAME,BAL columns by using 
+    skipping columns method
+--->And observe the output and beauty of identity
+
+NOTE:-This kind of EXAMPLE is very useful in ADO .NET
+
+
+
+
+         
+5.Create sequence with cycle optional clause ?
+

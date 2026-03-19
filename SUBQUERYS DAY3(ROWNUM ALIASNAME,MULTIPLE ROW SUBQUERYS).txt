@@ -1,0 +1,207 @@
+                               ROWNUM
+                             ==========
+
+1.Write a query to display first row from emp table using rownum?
+
+
+
+NOTE:-Generally, rownum doesn't work with more than 1 +ve integer, 
+=====  i.e., it works with <, <= operators.
+
+
+2.Write a query to display first 5 rows from emp table
+   by using rownum ?
+
+
+
+ *
+*3*Write a query to display last 2 rows from emp table
+ *  by using ROWNUM ?
+
+SQL>select * from emp
+    minus
+    select * from emp where rownum<=(select count(*)-2 from emp);
+
+
+            (or)
+
+
+SQL>select * from(select * from emp order by empno desc)
+    where rownum<=2;
+
+
+
+    EMPNO     ENAME         JOB        MGR     HIREDATE       SAL     COMM     DEPTNO
+  --------   ---------   ---------   -------  -----------   -------  -------  --------
+    7902       FORD       ANALYST     7566     03-DEC-81     3000                 20
+    7934      MILLER      CLERK       7782     23-JAN-82     1300                 10
+
+
+
+
+-----------------------------------------------------------------------------------------------------
+ 
+Note:-in oracle we are creating rownum aliasnames in inline views 
+=====  then that aliasname work with all sql operators.
+
+4.Write a query to display 2nd row from emp table by using  
+   rownum aliasname?
+
+
+SQL>select * from (select rownum r,ename,sal from emp)
+    where r=2;
+
+                (or)
+
+SQL>select * from(select rownum r,emp.* from emp)
+    where r=2;
+
+
+
+
+5.Write a query to display rows between 4 to 8 from emp table
+   by using rownum aliasname?
+
+
+
+6.Write a query to display 2nd,3rd,5th,6th,10th rows from emp table 
+  by using rownum aliasname?
+
+
+ *
+*7*Write a query to display even number of records from emp table
+ * by using rownum aliasname?
+
+
+
+8.Write a query to display first row, last row from emp table
+  by using rownum aliasname?
+
+
+
+9.Write a query to skip 3 rows and then display remaining all
+  rows from emp table by using rownum aliasname?
+
+------------------------------------------------------------------------------------------------------
+                         2.MULTIPLE ROW SUBQUERYS
+                         =========================
+
+1.Write a query to display employee details who are getting 
+  maximum salary in each department from emp table.
+
+SQL>select * from emp
+    where sal=(select max(sal) from emp group by deptno);
+                       2850
+                       3000
+                       5000
+
+error:single row subquery returns more than one row.
+  
+   When child query returns multiple values then those querys are
+called Multiple row Sub Querys.in multiple row subquery we are
+using in, all, any operators.
+
+SOLUTION:-
+========
+
+SQL> select * from emp
+     where sal in (select max(sal) from emp group by deptno); 
+
+
+EMPNO  ENAME     JOB        MGR   HIREDATE     SAL    COMM    DEPTNO
+----- -------- --------- -------- --------- -------- -------- -------
+7698   BLAKE    MANAGER    7839   01-MAY-81    2850              30
+7788   SCOTT    ANALYST    7566   09-DEC-82    3000              20
+7839   KING     PRESIDENT         17-NOV-81    5000              10
+7902   FORD     ANALYST    7566   03-DEC-81    3000              20
+
+ 
+
+in   ----->it returns same values in list
+
+>all ----->it satisfies all values in the list
+<
+
+>any ----->it satisfies any values in the list
+<
+
+  whenever we are using subquery special operators all then database
+servers internally uses logical operator AND. where as when we are 
+using subquery special operator any then database servers internally
+uses logical operator OR. 
+
+EG:-
+===
+SQL>select * from emp
+    where deptno>all(10,20);
+
+       30
+
+SQL>select * from emp
+    where deptno>any(10,20);
+
+       20
+       30
+
+
+
+
+------------------------------------------------------------------------------------------------------
+1.Write a query to display the employee records whose job title is 
+            same as SMITH,BLAKE from emp table?
+
+
+
+2.Write a query to display the male employees who are getting more
+   salary than the all the salaries of female employees?
+
+SQL> select * from emp666;
+
+       EMPNO      ENAME       GENDER         SAL
+      -------  ----------    --------     --------
+         1      ANUSHKA         F           4000
+         2      SURYA           M           5000
+         3      RADHIKA         F           3000
+         4      GOWTHAM         M           2000
+         5      KAVYA           F           2000
+
+CREATE TABLE EMP666
+(
+EMPNO NUMBER(4),
+ENAME VARCHAR2(10),
+GENDER VARCHAR2(10),
+SAL NUMBER(10)
+);
+
+INSERT INTO EMP666 VALUES(1,'ANUSHKA','F',4000);
+INSERT INTO EMP666 VALUES(2,'SURYA','M',5000);
+INSERT INTO EMP666 VALUES(3,'RADHIKA','F',3000);
+INSERT INTO EMP666 VALUES(4,'GOWTHAM','M',2000);
+INSERT INTO EMP666 VALUES(5,'KAVYA','F',2000);
+COMMIT;
+
+
+
+
+3.Write a query to display the employee records who are getting more
+  salary than the salaries of all managers from emp table?
+
+NOTE:-if sal> all list of values then condition is true
+
+
+
+4.Write a query to display the employees records who are getting more 
+  salary than the salaries of any of the manager from emp table?
+
+NOTE:-if sal>any one of the list of values.
+
+
+
+5.Write a query to display the employees who are getting more salary
+  than the any salary of 10th department from emp table ?
+
+------------------------------------------------------------------------------------------------------
+
+
+
+

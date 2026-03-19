@@ -1,0 +1,38 @@
+Sqlday-20
+----------
+Set_Operators:
+-------------
+Union: Combines rows return by two queries, duplicates are eliminated, result is sorted
+
+UnionAll: Combines rows return by two queries, duplicates are not eliminates, result is not sorted
+
+Intersect: returns common values
+
+Except: returns values present in 1st query output and not present in 2nd query output 
+
+----------------------------------------------------------------------------------------------------------------------------------
+Customers Table:
+
+CustomerID  Name    City
+1	        Alice   New York
+2	        Bob	    Chicago
+3	        Carol   Boston
+
+Suppliers Table:
+
+SupplierID  Name        City
+1	    WidgetsCo	Chicago
+2	    PartsInc	Boston
+3	    MegaMart	Seattle
+
+1)Print the cities of Customers, Suppliers table and Remove Duplicates?
+
+2)Print the Citites of Customers, Suppliers table and  keep the duplicates as it is ?
+
+3)Print the Cities Common to both tables?
+
+4)Print the Cities found in Customers and not found in Suppliers?
+
+5)Print the Cities found in Suppliers and not found in Customers?
+
+

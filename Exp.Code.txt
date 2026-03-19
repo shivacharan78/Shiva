@@ -1,0 +1,215 @@
+package com.nit.model;
+public class Product {
+
+	private int productId;
+	private String productName;
+	private String brand;
+	private double price;
+	private int stockQuantity;
+	
+	@Override
+	public String toString() {
+		return "Product [productId=" + productId + ", productName=" + productName + ", brand=" + brand + ", price="
+				+ price + ", stockQuantity=" + stockQuantity + "]";
+	}
+	public Product() {
+		super();
+	}
+	public int getProductId() {
+		return productId;
+	}
+	public void setProductId(int productId) {
+		this.productId = productId;
+	}
+	public String getProductName() {
+		return productName;
+	}
+	public void setProductName(String productName) {
+		this.productName = productName;
+	}
+	public String getBrand() {
+		return brand;
+	}
+	public void setBrand(String brand) {
+		this.brand = brand;
+	}
+	public double getPrice() {
+		return price;
+	}
+	public void setPrice(double price) {
+		this.price = price;
+	}
+	public int getStockQuantity() {
+		return stockQuantity;
+	}
+	public void setStockQuantity(int stockQuantity) {
+		this.stockQuantity = stockQuantity;
+	}
+	public Product(int productId, String productName, String brand, double price, int stockQuantity) {
+		super();
+		this.productId = productId;
+		this.productName = productName;
+		this.brand = brand;
+		this.price = price;
+		this.stockQuantity = stockQuantity;
+	}
+	
+}
+-----------------------------------------------------------------------------------------------------------
+package com.nit.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+
+import com.nit.model.Product;
+import com.nit.service.ProductService;
+@Controller
+public class ProductController {
+
+	@Autowired
+	ProductService service;
+	public String insertProduct(Product product)
+	{
+		String msg = service.addProduct(product);
+	    return msg;
+	}
+	public Product retProduct(int id)
+	{
+		return service.getProduct(id);
+	}
+}
+---------------------------------------------------------------------------------------------------------------
+package com.nit.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.nit.dao.ProductCrudOperation;
+import com.nit.model.Product;
+@Service
+public class ProductService {
+
+	@Autowired
+	ProductCrudOperation repository;
+	public String addProduct(Product product)
+	{
+		String msg = repository.addProduct(product);
+	    return msg;
+	}
+	public Product getProduct(int id)
+	{
+		return repository.getProduct(id);
+	}
+}
+------------------------------------------------------------------------------------------------------------------
+package com.nit.dao;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.springframework.stereotype.Repository;
+
+import com.nit.model.Product;
+@Repository
+public class ProductCrudOperation {
+
+	@Autowired
+	NamedParameterJdbcTemplate jdbcTemplate;
+//	public ProductCrudOperation(NamedParameterJdbcTemplate jdbcTemplate)
+//	{
+//		this.jdbcTemplate=jdbcTemplate;
+//	}
+	//Insert product details
+  public String addProduct(Product product)
+  {
+	  Map<String, Object> map=new HashMap<String, Object>();
+	  map.put("productId", product.getProductId());
+	  map.put("productName", product.getProductName());
+	  map.put("brand", product.getBrand());
+	  map.put("price", product.getPrice());
+	  map.put("stockQuantity", product.getStockQuantity());
+	  String query=
+	"insert into product49 values(:productId,:productName,:brand,:price,:stockQuantity)";
+      jdbcTemplate.update(query, map);
+      return "Product Added SuccessFully";
+  }
+	//Fetch product by productId
+   public Product getProduct(int pId)
+   {
+	   Map<String, Object> map=new HashMap<String, Object>();
+	   map.put("productId", pId);
+	   String get="select * from product49 where productId=:productId";
+      return jdbcTemplate.queryForObject(get, map,new BeanPropertyRowMapper<>(Product.class));
+   }
+	//Fetch all products
+
+	//Update product price
+
+	//Update stock quantity
+
+	//Delete product
+}
+------------------------------------------------------------------------
+package com.nit.config;
+
+import javax.sql.DataSource;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.springframework.jdbc.datasource.DriverManagerDataSource;
+@Configuration
+@ComponentScan("com.nit")
+public class ProductConfig {
+
+	@Bean
+	public DataSource getDataSource()
+	{
+		DriverManagerDataSource ds=new DriverManagerDataSource();
+	    ds.setDriverClassName("com.mysql.cj.jdbc.Driver");
+	    ds.setUrl("jdbc:mysql://localhost:3306/mydb01");
+	    ds.setUsername("root");
+	    ds.setPassword("Mysql@123");
+	    return ds;
+	}
+	@Bean
+	public NamedParameterJdbcTemplate getJdbcTemplate()
+	{
+		return new NamedParameterJdbcTemplate(getDataSource());
+	}
+//	@Bean
+//	public ProductCrudOperation getProductCrudOperation()
+//	{
+//		return new ProductCrudOperation(getJdbcTemplate());
+//	}
+}
+--------------------------------------------------------
+package com.nit;
+
+import org.springframework.beans.BeansException;
+import org.springframework.boot.SpringApplication;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
+import com.nit.config.ProductConfig;
+import com.nit.controller.ProductController;
+import com.nit.model.Product;
+public class OnlineProductInventorySystemApplication {
+
+	public static void main(String[] args) {
+	try (AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(ProductConfig.class)) {
+		ProductController pController = ctx.getBean(ProductController.class);
+//		String msg=pController.insertProduct(new Product(101, "Cell Phone", "Android", 50000d, 10));
+//		System.out.println(msg);
+		Product product = pController.retProduct(101);
+	    System.out.println(product);
+	} catch (BeansException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	}
+
+}

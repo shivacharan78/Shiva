@@ -1,0 +1,10 @@
+
+
+
+
+
+1. Count the number of words in a string.
+2. Remove duplicate characters from a string.
+3.Find the first non-repeated character in a string.
+4.Count the occurrences of each character in a string.
+5.Check if two strings are anagrams of each other.

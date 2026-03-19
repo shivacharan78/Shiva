@@ -1,0 +1,213 @@
+                                     JOINS TASK
+                                   =============
+
+
+1.Write an SQL query to find all users from Master_Users who never 
+  raised a help request-i.e their ID does not appear in the
+  Help_Requests table[Accenture Interview Question]
+
+
+SQL> SELECT * FROM MASTER_USERS;
+
+
+        ID        FIRST_NAME      LAST_NAME
+     --------    ------------    -----------
+         1          Ravi            Kumar
+         2          Sneha           Latha
+         3          Arjun           Das
+         4          Priya           Nair
+
+
+
+SQL> SELECT * FROM HELP_REQUESTS;
+
+
+    REQUEST_ID        USER_ID             ISSUE
+    ----------      ----------      ------------------
+         1              2              Login Issue
+         2              4              Payment Failed
+
+
+
+EXPECTED OUTPUT:-
+===============
+
+       ID           FIRST_NAME        LAST_NAME
+    --------      -------------     -------------
+        1             Ravi              Kumar
+        3             Arjun             Das
+
+
+------------------------------------------------------------------------------------------------------
+2.Write an SQL query to display:[acenture interview question]
+
+The department name(use alias DeptNAME),the count of doctors(use alias TotalDoctors),
+and the total salary (use alias TotalSalary) for each department.
+Sort the results by the total salary in descending order
+
+Your output should have 3 columns as given below
+
+DEPTNAME     TOTALDOCTORS      TOTALSALARY
+
+
+SCHEMA:-
+======
+
+        DOCTORS                    DEPARTMENTS
+      -----------                ---------------
+      DOCTORID(PK)               DEPARTMENTID(PK) 
+      FIRSTNAME                  DEPARTMENTNAME
+      LASTNAME                   LOCATION
+      GENDER                     DESCRIPTION
+      DATEOFBIRTH                
+      PHONE
+      EMAIL
+      ADDRESS
+      DEPARTMENTID(FK)
+      EMPLOYMENTDATE
+      SALARY
+------------------------------------------------------------------------------------------------------3.Write an SQL query to display:[acenture interview question]
+
+The student id,first name,last name of students enrolled in a course held in room
+'R1'.Use alias Student Id,first Name,Last Name
+
+Your output should have 3 columns:
+
+Student Id       First Name      Last Name
+
+
+
+------------------------------------------------------------------------------------------------------
+4.Write a query to display Order id.delivery time for the order which was
+  delivered on 'Pine Street'.[COGNIZANT INTERVIEW QUESTION]
+
+
+Your output should have 2 columns as given below.
+
+     ORDER_ID      DELIVERY_TIME
+
+
+
+
+5.Write a query to display the animal's name(use alias animal_name),species,gender,and
+  caretaker's full name(use alias caretaker_name) for all male animals.The full name
+  shold be create by combining the first name and last name with a space betwen them.
+
+
+   Your output should have 4 columns as given below [COGNIZANT INTERVIEW QUESTION]
+
+    ANIMAL_NAME     SPECIES      GENDER    CARETAKER_NAME
+
+
+------------------------------------------------------------------------------------------------------
+6.Find the courses that currently have no students enrolled.[Innominds software Pvt.Ltd]
+
+
+SQL> SELECT * FROM STUDENTS111;
+
+    STUDENT_ID       NAME          AGE       COURSE_ID       MARKS
+    ----------    ----------    ---------    ----------    ---------
+         1          Arjun           21          101           85
+         2          Bhavna          22          101           78
+         3          Chirag          20          102           91
+         4          Divya           21          103           67
+         5          Esha            22          102           88
+         6          Farhan          23          104           72
+
+
+
+SQL> SELECT * FROM COURSES111;
+
+     COURSE_ID        COURSE_NAME          INSTRUCTOR       CREDITS
+    ----------    --------------------   -------------    ----------
+       101         Database Systems        Dr.Mehta            4
+       102         Data Structures         Dr.Rao              3
+       103         Operating Systems       Dr.Kumar            4
+       104         Computer Networks       Dr.Singh            3
+       105         Oracle                  Mr Murali           3
+
+
+
+7.Find courses that have more than one student scoring above 80 marks[Innominds Software Pvt.Ltd]
+
+
+
+
+8.Table A contains student data.Table B contains Recruiting companies.Which type of join
+  needs to fetch list of students who are selected by companies[Innominds Software Pvt.Ltd]
+
+a) Ineer Join
+
+b) Right Join
+
+c) Left Join
+
+d) Full Outer Join
+
+Answer:
+------------------------------------------------------------------------------------------------------
+CREATE TABLE MASTER_USERS
+(
+ID NUMBER(2),
+FIRST_NAME VARCHAR2(10),
+LAST_NAME VARCHAR2(10)
+);
+
+INSERT INTO MASTER_USERS VALUES(1,'Ravi','Kumar');
+INSERT INTO MASTER_USERS VALUES(2,'Sneha','Latha');
+INSERT INTO MASTER_USERS VALUES(3,'Arjun','Das');
+INSERT INTO MASTER_USERS VALUES(4,'Priya','Nair');
+
+
+
+CREATE TABLE HELP_REQUESTS
+(
+REQUEST_ID NUMBER(2),
+USER_ID NUMBER(2),
+ISSUE VARCHAR2(20)
+);
+
+INSERT INTO HELP_REQUESTS VALUES(1,2,'Login Issue');     
+INSERT INTO HELP_REQUESTS VALUES(2,4,'Payment Failed');      
+
+
+
+
+CREATE TABLE COURSES111 (
+    COURSE_ID NUMBER(4) PRIMARY KEY,
+    COURSE_NAME VARCHAR2(20),
+    INSTRUCTOR VARCHAR2(10),
+    CREDITS NUMBER(2)
+);
+
+
+INSERT INTO COURSES111 VALUES (101, 'Database Systems', 'Dr.Mehta', 4);
+INSERT INTO COURSES111 VALUES (102, 'Data Structures',  'Dr.Rao', 3);
+INSERT INTO COURSES111 VALUES (103, 'Operating Systems','Dr.Kumar', 4);
+INSERT INTO COURSES111 VALUES (104, 'Computer Networks','Dr.Singh', 3);
+INSERT INTO COURSES111 VALUES (105, 'Oracle','Mr Murali',3);
+  
+
+CREATE TABLE STUDENTS111(
+    STUDENT_ID NUMBER(4) PRIMARY KEY,
+    NAME VARCHAR2(10),
+    AGE NUMBER(2),
+    COURSE_ID NUMBER(4) REFERENCES COURSES111(COURSE_ID),
+    MARKS NUMBER(2)
+);
+
+INSERT INTO STUDENTS111 VALUES (1, 'Arjun', 21, 101, 85);
+INSERT INTO STUDENTS111 VALUES (2, 'Bhavna', 22, 101, 78);
+INSERT INTO STUDENTS111 VALUES (3, 'Chirag', 20, 102, 91);
+INSERT INTO STUDENTS111 VALUES (4, 'Divya', 21, 103, 67);
+INSERT INTO STUDENTS111 VALUES (5, 'Esha', 22, 102, 88);
+INSERT INTO STUDENTS111 VALUES (6, 'Farhan', 23, 104,72);
+
+
+COMMIT;
+
+
+
+
+
+

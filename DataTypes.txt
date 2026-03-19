@@ -1,0 +1,7 @@
+Write a javascript program to demonstrate the 
+	- all datatypes (primitive with different variable let const var)]
+	- check each data type using the typeof
+	- perform the mathematical operations on various datatypes and print output 
+		ex addition, subtraction, multiplication and division
+	- perform the string concatenation
+	- reassign the values for the variables and print the value as well as datatype.

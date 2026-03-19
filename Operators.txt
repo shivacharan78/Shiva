@@ -1,0 +1,79 @@
+Ques 1 : Arithmetic Precedence
+Goal: Understand the order of operations in complex arithmetic expressions.
+Instructions:
+1.	Declare a variable x using let and set it to 10.
+2.	Declare a variable y using let and set it to 5.
+3.	Declare a variable result and assign it the value of the following expression: x + y * 2 - 4 / 2.
+4.	Print the final result.
+Expected output : 18
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Ques 2 : Strict vs. Loose Equality
+Goal: Highlight the difference between the loose (==) and strict (===) equality operators.
+Instructions:
+1.	Declare a const variable numStr with the value "42".
+2.	Declare a const variable numVal with the value 42.
+3.	Print the result of numStr == numVal.
+4.	Print the result of numStr === numVal.
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Ques 3 : Logical AND Operator (&&)
+Goal: Use the logical AND operator to check multiple conditions and practice short-circuiting.
+Instructions:
+1.	Declare a let variable age and set it to 25.
+2.	Declare a let variable hasID and set it to true.
+3.	Declare a variable canEnter and set it to the result of checking if age is greater than 21 AND hasID is true.
+4.	Print the boolean value of canEnter.
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Ques 4 : Modulo Operator (%)
+Goal: Use the modulo operator to determine if a number is even or odd.
+Instructions:
+1.	Declare a const variable numberToCheck and set it to 13.
+2.	Declare a variable isEven and set it to the result of the comparison: numberToCheck modulo 2 equals 0.
+3.	Print the boolean value of isEven.
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Ques 5 : Compound Assignment Operator (+=)
+Goal: Practice using the compound addition assignment operator.
+Instructions:
+1.	Declare a let variable total and set its initial value to 100.
+2.	Use the += operator to add 50 to total.
+3.	Use the += operator to add the string " USD" to the updated total. (Observe the type coercion).
+4.	Print the final total.
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Ques 6 : The typeof Operator
+Goal: Use the typeof operator to check the datatype of different values.
+Instructions:
+1.	Declare a const variable dataA with the value 99.9.
+2.	Declare a const variable dataB with the value null.
+3.	Print the result of typeof dataA.
+4.	Print the result of typeof dataB.
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Ques 7 : Logical NOT Operator (!)
+Goal: Practice using the logical NOT operator to flip a boolean value and coerce a number to a boolean.
+Instructions:
+1.	Declare a let variable isComplete and set it to false.
+2.	Print the result of !isComplete.
+3.	Print the result of !0 (Coercing the number 0).
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Ques 8 : Increment and Decrement Operators
+Goal: Understand the post-fix increment operator (++).
+Instructions:
+1.	Declare a let variable count and set it to 5.
+2.	Declare a let variable newCount and assign it the value of count++.
+3.	Print the value of newCount.
+4.	Print the final value of count.
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Ques 9 : Prefix Increment Operator (++)
+Goal: Understand the prefix increment operator, where the increment happens before the value is assigned.
+Instructions:
+1.	Declare a let variable points and set it to 10.
+2.	Declare a let variable bonusPoints and assign it the value of ++points.
+3.	Print the value of bonusPoints.
+4.	Print the final value of points.
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Ques 10 : Logical OR Operator (||) and Defaults
+Goal: Use the logical OR operator to assign a default value.
+Instructions:
+1.	Declare a const variable username and assign it the value "" (an empty string).
+2.	Declare a const variable defaultName with the value "Guest".
+3.	Declare a variable displayName and assign it the first truthy value between username OR defaultName.
+4.	Print the displayName.

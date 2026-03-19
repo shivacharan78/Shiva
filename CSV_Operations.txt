@@ -1,0 +1,116 @@
+
+DBConnection.java:
+==================
+
+package com.jdbc;
+import java.sql.Connection;
+import java.sql.DriverManager;
+
+public class DBConnection {
+
+	static Connection con=null;
+	private DBConnection() {}
+	static
+	{
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			 con = DriverManager.getConnection
+					("jdbc:oracle:thin:@localhost:1521:xe", "system", "oracle");
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public static Connection getConnection()
+	{
+		return con;
+	}
+}
+=======================================================================================================
+InsertEmployeeData.java:
+========================
+
+package com.jdbc;
+import java.io.FileInputStream;
+import java.io.FileReader;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.util.Scanner;
+
+public class InsertEmployeeData {
+
+	public static void main(String[] args) {
+		try {
+			FileReader fis=new FileReader
+					("C:\\Users\\Dell\\Downloads\\EMPLOYEE_DATA.csv");
+			Connection con = DBConnection.getConnection();
+			PreparedStatement ps=con.prepareStatement
+					("insert into employee_data values(?,?,?,?)");
+			Scanner sc=new Scanner(fis);
+			sc.nextLine();
+		     long startTime = System.currentTimeMillis();
+			while(sc.hasNext())
+			{
+				String String = sc.nextLine();
+				String[] split = String.split(",");
+				for(int i=0;i<split.length;i++)
+				{
+					ps.setString(i+1, split[i]);
+				}
+				//int executeUpdate = ps.executeUpdate();
+				ps.addBatch();
+			}
+			ps.executeBatch();
+			 long endTime = System.currentTimeMillis();
+			System.out.println("SuccessFully Inserted.....");
+			System.out.println("Time Taken :"+(endTime-startTime));
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}
+
+}
+============================================================================================
+
+RetrivingData.java:
+===================
+
+package com.jdbc;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+
+public class RetrivingData {
+	public static void main(String[] args) throws IOException {
+		
+		try (FileWriter fos = new FileWriter("D:\\docker_images\\employee21.csv")) {
+			fos.write("ID,FirstName,LastName,MailId");
+			try {
+				Connection con = DBConnection.getConnection();
+				PreparedStatement ps=con.prepareStatement
+						("select * from employee_data");
+				ResultSet rs = ps.executeQuery();
+				
+			   while(rs.next())
+			   {
+				   String result = String.format("%d,%s,%s,%s", rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4));
+			       fos.write("\n");
+			       fos.write(result);
+			   }
+			   System.out.println("Success");
+			}
+			catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+
+	}
+
+}

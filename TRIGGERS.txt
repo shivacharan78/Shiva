@@ -1,0 +1,55 @@
+                              Triggers
+                             ==========
+                        
+
+         Trigger is also same as stored procedure. and also it will automatically 
+invoked whenever DML operations performed on table or view.
+
+
+
+ *
+***Write a T-SQL trigger on emp table not allowed to perform DML operations
+ *  on saturday, sundays? 
+
+-----------------------------------------------------------------------------------
+2.Write a T-SQL trigger on emp table not allow to decrement salary?
+
+
+
+What ever sir,explained in the classroom notes practice remaining examples
+
+ 
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

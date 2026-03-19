@@ -1,0 +1,299 @@
+                                      DML TASK2
+                                    =============
+
+
+1.Create EMP6 table with following columns and insert the records as following
+
+
+EMPNO    ENAME       SAL      JOB         DEPARTMENT
+-----  ---------   ------   ---------   -------------
+101      KIRAN      6000     CLERK        RESEARCH
+102     GOWTHAM     10000    TEAM LEAD      IT  
+103      SATYA      6500     CLERK        RESEARCH  
+104      KAVYA      8000     ACCOUNTANT   FINANCE 
+105     PREETI      12000    SALESMAN     SALES
+106      SURYA      20000    MANAGER        IT        
+107     ANUSHKA     15000    DEVELOPER      IT 
+108     NITISH      12000    SALESMAN     SALES       
+
+
+
+
+2.Set salary as 7500 to an employee whose employee no is 103 from emp6 table
+
+
+
+3.Update the job to MANAGER and increase the salary by 3000 rupees for the employee
+  whose employee name starts with A and ends with A from emp6 table.
+
+
+
+4.Increase the salary of all employees in the IT department by 20% in the emp6 table.
+
+
+
+5.increase 1000 salary to all employees in emp6 table
+
+
+
+6.Set the salary to 9500 for employees whose name is KAVYA in the emp6 table.
+
+
+
+7.Increase the salary of all employees whose job is salesman by 20% in the emp6 table.
+
+
+
+8.increase salary by 10% only for employees whose salary is less than 10000.
+
+
+
+9.Add an ADDRESS COLUMN TO THE EMP6 TABLE ?
+
+
+
+
+Note:- In all relational databases by using update command we can also insert data
+=====  into perticular cell(existing row).
+
+
+10.Set the address to HYD for the employee whose name is KIRAN in the emp6 table.
+
+
+
+11.Set the address to GUNTUR for all employees in the IT department in the emp6 table.
+
+
+
+12.Delete the employee record whose name is PREETHI from the emp6 table.
+
+
+
+13.Delete all employee records from the emp6 table where the salary is
+   less than 9000.
+
+
+
+14.delete all the records from emp6 table ?
+
+
+
+15.What is command to get it back the data after deleting ?
+                      (or)
+   How can we restore the data after performing the delete command? 
+
+-----------------------------------------------------------------------------------------------------
+                                   OPERATORS MCQ'S
+                                 ==================
+
+1.Which of the following statements contains an error?
+
+a) Select empid from emp;
+
+b) Select * from emp where empid = 10003;
+
+c) Select empid from emp where empid = 10006;
+
+d) Select empid where empid = 1009 and lastname = 'ANUSHKA';
+
+Answer: 
+------------------------------------------------------------------------------------------------------
+2.Select * from employee where salary>10000 and dept_id=101;
+
+ Which of the following fields are displayed as output?
+
+a) Salary, dept_id	
+
+b) Dept_Id	
+
+c) Salary	
+
+d) All the field of employee table
+
+
+Answer: 
+-----------------------------------------------------------------------------------------------------
+3.Which operator is used to check if a value exists in a list of values?
+
+a) LIKE
+
+b) IN
+
+c) BETWEEN
+
+d) EXISTS
+
+
+Answer:
+------------------------------------------------------------------------------------------------------
+4.The BETWEEN operator in Oracle is used to:
+
+a) Check if a value matches a pattern
+
+b) Check if a value falls within a range
+
+c) Check if a value is NULL
+
+d) Concatenate two strings
+
+
+Answer:
+------------------------------------------------------------------------------------------------------
+5.What is the output of the following statement?
+
+  SQL>select * from emp where sal between 4000 and 2000;
+
+a) it returns who are getting the salaries from 4000 to 2000
+
+b) it returns who are getting the salaries from 2000 to 4000
+
+c) No rows selected
+
+d) both A and B
+
+
+Answer:
+------------------------------------------------------------------------------------------------------
+6.When three or more OR conditions are combined, which operators 
+   is used to replace to make the query simple?
+
+a) Like
+
+b) Between
+
+c) AND OR
+
+d) In
+
+
+Answer:
+------------------------------------------------------------------------------------------------------
+7.For NULL comparison purpose which operators we are used in oracle SQL
+
+a) =, !=
+
+b) IS NULL, IS NOT NULL
+
+c) ==, <>
+
+d) IS NULL, IS EQUAL TO
+
+
+Answer:
+------------------------------------------------------------------------------------------------------
+8.Which operator is used to search for specified pattern in a column
+
+a) Get
+
+b) Like
+
+c) From
+
+d) In
+
+
+Answer:
+------------------------------------------------------------------------------------------------------
+9.The SAL column stores the monthly salary of the employee. 
+   Which of the following query calculate the annual compensation as
+   monthly salary plus(+) a monthly
+   bonus of 100 ?
+
+a) SELECT ename, sal, 12*(sal+100) FROM emp;
+
+b) SELECT ename, sal, (12*sal)+100 FROM emp;
+
+c) SELECT ename, sal+100,*12 FROM emp;
+
+d) NONE
+
+
+Answer:
+------------------------------------------------------------------------------------------------------
+10.The || operator in Oracle is used for:
+
+a) Addition
+
+b) Concatenation
+
+c) Subtraction
+
+d) Division
+
+
+Answer:
+------------------------------------------------------------------------------------------------------
+11.What is the result of this query:
+
+SELECT NULL + 100 FROM DUAL;
+
+a) 100
+
+b) NULL
+
+c) ERROR
+
+d) 0
+
+
+Answer:
+------------------------------------------------------------------------------------------------------
+12.Null means
+
+a) Zero
+
+b) -1
+
+c) 1
+
+d) Empty
+
+
+Answer:
+------------------------------------------------------------------------------------------------------
+13.Which operator is used to comparing NULLs
+
+a) NULL
+
+b) NVL
+
+c) IS NULL
+
+d) NULLIF
+
+
+Answer:
+------------------------------------------------------------------------------------------------------
+14.Which of the following SQL query will correctly return all employees whose
+   name contains 'SIRISHA' from the employee table?
+
+a) select * from employee where ename like 'SIRISHA%';
+
+
+b) select * from employee where ename like '%SIRISHA%';
+
+
+c) select * from employee where ename like 'SIRISHA';
+
+
+d) select * from employee where ename like 'S%';
+
+
+Answer:
+------------------------------------------------------------------------------------------------------
+15.In Oracle SQL, which of the following will correctly concatenate 
+    first name and last name with a space in between?
+
+a) CONCAT(first_name, ' ', last_name)  //This function combines 2 strings only.Here 3 strings are                                               there this concat function failure in oracle.
+
+b) first_name +' '+ last_name
+
+c) first_name ||' '|| last_name
+
+d) Both A and C
+
+
+Answer: c) first_name ||' '|| last_name
+
+
+-----------------------------------------------------------------------------------------------------

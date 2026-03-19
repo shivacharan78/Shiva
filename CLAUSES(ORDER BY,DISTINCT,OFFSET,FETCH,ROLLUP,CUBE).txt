@@ -1,0 +1,268 @@
+                                 ORDER BY CLAUSE
+                                ==================
+
+Order by:-order by clause is used to sorting data either ascending 
+========  order or descending order.
+     
+order by clause having two keywords.
+1)asc
+2)desc
+
+syntax:-
+=======
+    select * from tablename
+    order by columnname[asc/desc];
+
+
+
+1.Write a query to display the employee enames and their salaries,sorted by salary 
+    in descending order from EMP table?
+
+
+
+2.Write a query to display all employee names in alphabetical order from EMP table ?
+
+
+
+
+3.Write a query to display the all employee records from EMP table and arrange them 
+  according to seniority ?
+
+
+
+
+4.Write a query to display all employee records, arranged in ascending order of department number.
+  If two or more employees are in the same department, sort them by salary in descending order
+
+
+
+
+5.Check the following order by clause outputs
+
+1)select ename,comm 
+  from emp
+  order by comm desc;
+
+2)select ename,comm
+  from emp
+  order by comm desc nulls last;
+
+
+
+
+6.Write the query to display the emp_first_name and emp_last_name 
+  as emp_fullname and year of birth and sort them based on their
+  descending age.[INTERVIEW QUESTION]
+
+NOTE:-By default Calender order is ascending order
+
+
+SQL>select * from emp444;
+
+emp_id        emp_first_name        emp_last_name      birthdate
+------      -----------------     --------------      ------------
+  1            john                  doe               23-apr-1985
+  2            jill                  davis             15-jun-1999
+  3            jack                  Johnson           25-oct-1992
+  4            james                 Wilson            12-sep-1983
+
+
+
+
+7.Write a query to display FirstName,LastName and Age from the 
+  emp333 table for all users who are above the age of 25 
+  order by ID in ascending order,
+your output should look like the following[Helical Solutions Pvt.Ltd INTERVIEW QUESTION]
+
+EXPECTED OUTPUT:-
+================
+
+       FIRSTNAME       LASTNAME         AGE
+      ----------      -----------     ------
+         Jenny          Richards        28
+         Noah           Fritz           30
+
+
+
+
+8.Write a query to display the ID and NAME of the three highest-scoring students.
+
+•Sort the results by SCORE in descending order.
+
+•If multiple students have the same SCORE, sort them by ID in ascending order.
+
+
+
+9.Show all the jobs in the EMP table?
+
+
+
+10.Write a query to list all unique departments numbers from EMP table ?
+
+-----------------------------------------------------------------------------------------
+                              offset & fetch clauses
+                             =======================
+ 
+ Oracle 12c introduced fetch first/next clauses for filtering data in a table and also these clauses are used in top-n analysis
+
+
+1.Write a query to display first 5 rows from emp table by using fetch first clause?
+
+
+
+
+2.Write a query to display top 3 highest paid salaries from emp table?
+
+
+
+
+3.Write a query to display the seniour most employee record from emp table
+  by using fetch first clause?
+
+
+
+4.Write an query to sort the salaries from the emp table in descending order,
+  skip the top 4 highest salaries, and then retrieve the next 5 salaries 
+  from the result set
+
+ 
+
+
+
+5.Write a query to skip first 3 rows and then display remaining rows from emp table
+  by using offset & fetch first clause?
+
+
+
+------------------------------------------------------------------------------------------------------
+ROLLUP,CUBE:-Oracle 8i introdused rollup,cube clauses.these clauses
+============  are optoinal clauses used along with group by clause
+only.these clauses are used to calculate subtotal and grand total.
+
+
+Syntax:- select col1, col2..... 
+=======   from tablename
+         group by rollup(col1,col2....);
+
+
+Syntax:- select col1, col2....
+========  From tablename 
+          group by cube(col1,col2....);
+
+
+Rollup is used to calculate subtotal and grandtotal based on a single column.
+where as if we want to calculate subtotal,grandtotal based on all grouping
+columns then we are using cube.
+
+Eg:- 
+====
+SQL> select deptno, job, sum(sal)
+     from emp
+     group by rollup(deptno, job); 
+
+   DEPTNO JOB         SUM(SAL)
+---------- --------- ----------
+        10 CLERK           1300
+        10 MANAGER         2450
+        10 PRESIDENT       5000
+        10                 8750
+        20 CLERK           1900
+        20 ANALYST         6000
+        20 MANAGER         2975
+        20                10875
+        30 CLERK            950
+        30 MANAGER         2850
+        30 SALESMAN        5600
+        30                 9400
+                          29025
+
+SQL> select deptno,job,sum(sal)
+     from emp
+     group by cube(deptno,job);
+
+     DEPTNO JOB         SUM(SAL)
+---------- --------- ----------
+                          29025
+           CLERK           4150
+           ANALYST         6000
+           MANAGER         8275
+           SALESMAN        5600
+           PRESIDENT       5000
+        10                 8750
+        10 CLERK           1300
+        10 MANAGER         2450
+        10 PRESIDENT       5000
+        20                10875
+        20 CLERK           1900
+        20 ANALYST         6000
+        20 MANAGER         2975
+        30                 9400
+        30 CLERK            950
+        30 MANAGER         2850
+        30 SALESMAN        5600
+
+SQL>select deptno, job, sum(sal),count(*) 
+    from emp 
+    group by cube(deptno,job);
+
+   DEPTNO JOB         SUM(SAL)   COUNT(*)
+---------- --------- ---------- ----------
+                          29025         14
+           CLERK           4150          4
+           ANALYST         6000          2
+           MANAGER         8275          3
+           SALESMAN        5600          4
+           PRESIDENT       5000          1
+        10                 8750          3
+        10 CLERK           1300          1
+        10 MANAGER         2450          1
+        10 PRESIDENT       5000          1
+        20                10875          5
+        20 CLERK           1900          2
+        20 ANALYST         6000          2
+        20 MANAGER         2975          1
+        30                 9400          6
+        30 CLERK            950          1
+        30 MANAGER         2850          1
+        30 SALESMAN        5600          4
+
+
+
+
+
+
+-----------------------------------------------------------------------------------------
+create table emp444
+(
+empid number(10),
+emp_first_name varchar2(15),
+emp_last_name varchar2(15),
+birthdate date
+);
+
+insert into emp444 values(1,'john','doe','23-apr-1985');
+insert into emp444 values(2,'jill','davis','15-jun-1999');
+insert into emp444 values(3,'jack','johnson','25-oct-1992');
+insert into emp444 values(4,'james','willson','12-sep-1983');
+commit;
+
+
+create table student10
+(
+id number(4),
+name varchar2(10),
+score number(5)
+);
+
+insert into student10 values(1,'Bob',50);
+insert into student10 values(2,'John',60);
+insert into student10 values(3,'Harry',45);
+insert into student10 values(4,'Dick',85);
+insert into student10 values(5,'Dixie',85);
+insert into student10 values(6,'Sid',70);
+insert into student10 values(7,'Tom',65);
+insert into student10 values(8,'Alex',90);
+insert into student10 values(9,'Erika',70);
+
+COMMIT;
+

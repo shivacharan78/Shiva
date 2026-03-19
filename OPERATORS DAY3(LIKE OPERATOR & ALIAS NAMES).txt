@@ -1,0 +1,307 @@
+                           Like operator
+                         ================
+
+4.like operator:-like operator is used to retrieve data from database based on 
+================ specified pattern in where clause.
+
+   Along with like operator oracle provided 2 special wild card characters.
+These are having special meaning.
+ 
+1)% ---> string or group of characters matching(replaces 0 or 
+                                                any no of characters)
+
+2)_ ---> single character matching purpose(replaces 1 char)
+
+
+Syntax:-
+=======
+ select * from tablename where columnname like 'character pattern';
+
+
+
+1.Write a query to display the employees whose ename start with S 
+   from emp table using like operator?
+
+
+
+
+2.Write a query to display the employees whose ename end with S from
+   emp table using like operator?
+
+
+
+
+3.Write a query to display the employees whose empno start with
+  76 from emp table by using like operator?
+
+
+
+
+4.Write a query to display the employees whose ename contain M in any position 
+  from emp table by using like operator?
+
+
+
+
+5.Write a query to display the employee records whose name 2nd
+  character is A?
+
+
+
+
+6.Write a query to display the employee records whose name 3rd 
+  character is M?
+
+
+
+
+7.Write a query to display the employee records whose name has 4
+  letters from emp table by using like operator?
+
+
+
+
+8.Write a query to display the employees who are joining in the year
+  1981 from emp table using like operator?
+
+
+
+
+9.Write a query to display the employees who are joining in the 
+   month DECEMBER from the emp table using like operator?
+
+
+
+
+10.Write a query to display the employees whose name contain either
+  'AM' or 'AR' strings from emp table by using like operator
+
+
+
+ 
+11.Write a query to display the employee records whose name started
+   and ended with S?
+
+
+
+
+12.Write a query to display the employee records whose name 
+   starting with VOWEL?
+
+
+
+
+13.Write an SQL query to retrieve all employee names from the table 
+   EMP555 that contain the word 'SIRISHA' ?[INTERVIEW QUESTION]
+
+
+SQL>SELECT * FROM EMP555;
+
+           ENAME
+     ----------------
+      SIRISHA GAYATRI
+      GAYATRI SIRISHA
+      ANUSHKA SHETTY
+      ANU SIRISHA RAI
+      SURYA SURYA
+
+
+CREATE TABLE EMP555
+(
+ENAME VARCHAR(20)
+);
+
+INSERT INTO EMP555 VALUES('SIRISHA GAYATRI');
+INSERT INTO EMP555 VALUES('GAYATRI SIRISHA');
+INSERT INTO EMP555 VALUES('ANUSHKA SHETTY');
+INSERT INTO EMP555 VALUES('ANU SIRISHA RAI');
+INSERT INTO EMP555 VALUES('SURYA SURYA');
+COMMIT;
+
+
+
+
+------------------------------------------------------------------------------------------------------
+Mixed Query:-
+===========
+NOTE:-Where clause is used to filters the records in a table. And there
+===== can be only one WHERE clause in every relational databases. if we
+      want filter the data after where then we must use AND operator. 
+
+
+
+
+1.Write a query to display employees who are working as either 'MANAGER' or 'CLERK' 
+   and earning salary between 1500 and 3000 and joined in the year 1981 
+   and are not working in departments 10 or 20 from EMP table ?
+
+
+------------------------------------------------------------------------------------------------------
+alias names
+===========
+
+1.Write a query to display ENAME as (use aliasname EMPLOYEE_FIRST_NAME),SAL,JOB
+  from EMP table and whose salary is greater than 2000
+
+
+
+
+2.Write an sql query to display the first name(use alias name staff first name ),position and
+  salary of staff members where salary is greater than 50000 ?[INTERVIEW QUESTION] 
+
+ 
+
+your output should have three columns as given below
+
+STAFF FIRST NAME    POSITION       SALARY
+
+CREATE TABLE STAFF (
+    STAFF_ID INT,
+    FIRST_NAME VARCHAR(10),
+    LAST_NAME VARCHAR(10),
+    POSITION VARCHAR(10),
+    SALARY MONEY
+);
+
+INSERT INTO STAFF VALUES(1, 'ANUSHKA', 'SHETTY', 'MANAGER', 60000);
+INSERT INTO STAFF VALUES(2, 'KIRAN', 'KUMAR', 'DEVELOPER', 48000);
+INSERT INTO STAFF VALUES(3, 'GOWTHAM', 'RAJ', 'TEAM LEAD', 75000);
+INSERT INTO STAFF VALUES(4, 'KAVYA', 'PAPA', 'HR', 51000);
+INSERT INTO STAFF VALUES(5, 'PREETI', 'ZINTA', 'CLERK', 30000);
+
+
+SELECT * FROM STAFF;
+
+
+
+
+
+
+3.Write an SQL query to display the NAME(use alias USERNAME) and their email (use alias EMAILID) 
+  of users who have a phone number ending with '29' 
+  from the USERS table?[COGNIZENT INTERVIEW QUESTION]                                                                                         
+
+
+USERS
+USER_ID    NAME     EMAIL       PHONE_NUMBER
+
+
+ Your output should have 2 columns as given below
+
+   USERNAME      EMAILD
+
+
+CREATE TABLE USERS (
+    USER_ID INT,
+    NAME VARCHAR(15),
+    EMAIL VARCHAR(20),
+    PHONE_NUMBER VARCHAR(10)
+);
+
+INSERT INTO USERS VALUES(1, 'ANUSHKA', 'anushka@gmail.com', '9876526229');         
+INSERT INTO USERS VALUES(2, 'GOWTHAM', 'gowtham@gmail.com', '9912347810');
+INSERT INTO USERS VALUES(3, 'SURYA',   'surya@gmail.com',   '9988776629'); 
+INSERT INTO USERS VALUES(4, 'KAVYA PAPA','kavya@gmail.com', '9988776655');
+
+
+SELECT * FROM USERS;
+
+
+------------------------------------------------------------------------------------------------------
+                                   OPERATORS TASK
+                                 =================
+
+SELECT * FROM ITEM;
+
+   ITEM_NO    ITEM_NAME    COLOR       ITEM_SIZE      PRICE     PURCHASED_DATE
+  --------   ----------  ----------   ----------   ----------  ---------------
+      1        Shirt        Red           40          500         02-JAN-25
+      2        Pant         Blue          42          799         10-NOV-24
+      3        Saree        Pink                      1200        19-MAR-23
+      4        Chudidar     Green         38          899         16-JAN-25
+      5        Lehanga      Yellow                    1500        24-AUG-25
+      6        Shirt        Blue          42          550         16-APR-25
+      7        Pant         Black         40          750         12-DEC-24
+      8        Saree        Black                     1300        18-SEP-24
+
+1.Write a query to display itemname,color and price of items whose price is more than 800.
+
+
+
+2.Write a query to display all items details where the color is not 'Black'.
+
+
+
+3.Write a query to display the item details where the item name is either 
+  shirt,saree,or chudidar.
+
+
+
+4.Write a query to display all details of the item where the itemname is 'Shirt' 
+  and the itemsize is 42.
+
+
+5.Write a query to display item details where the item name is saree and 
+  color must be pink.
+
+
+
+6.Write a query to display item details where the price between 500 and 1200.
+
+
+
+7.Write a query to display item details where the items was purachased in 2024
+
+
+
+8.Write a query to display items where the item sizes are NULL
+
+
+
+9.Write a query to display items where the itemname start with 'S'
+
+
+
+10.Write a query to display the details of the item where the ITEM_NAME is Shirt and 
+   the COLOR is 'Red' and the ITEM_SIZE is 40.
+
+
+
+11.Write a query to display items from the ITEM table where:
+
+• The item is either a 'Shirt' or a 'Pant'
+
+• The price is between 500 and 800
+
+• The item was purchased in the year 2025
+
+• The color is not 'Red' or 'Black'
+ 
+-----------------------------------------------------------------------------------------------------
+CREATE TABLE ITEM (
+ITEM_NO INT,
+ITEM_NAME VARCHAR(10),  
+COLOR VARCHAR(10),  
+ITEM_SIZE  INT,  
+PRICE MONEY,  
+PURCHASED_DATE  DATE        
+);
+
+
+INSERT INTO ITEM  VALUES (1, 'Shirt', 'Red', 40, 500,'2025-02-01');
+INSERT INTO ITEM  VALUES (2, 'Pant', 'Blue', 42, 799,'2024-11-10');
+INSERT INTO ITEM  VALUES (3, 'Saree', 'Pink', NULL, 1200,'2023-03-19');
+INSERT INTO ITEM  VALUES (4, 'Chudidar', 'Green', 38, 899,'2025-01-16');
+INSERT INTO ITEM  VALUES (5, 'Lehanga', 'Yellow', NULL, 1500,'2025-08-24');
+INSERT INTO ITEM  VALUES (6, 'Shirt', 'Blue', 42, 550,'2025-04-16');
+INSERT INTO ITEM  VALUES (7, 'Pant', 'Black', 40, 750,'2024-12-12' );
+INSERT INTO ITEM  VALUES (8, 'Saree', 'Black', NULL, 1300.00,'2024-09-18');
+
+
+
+
+
+
+
+
+

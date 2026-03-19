@@ -1,0 +1,184 @@
+                               ORDER BY CLAUSE
+                                ==================
+
+Order by:-order by clause is used to sorting data either ascending 
+========  order or descending order.
+     
+order by clause having two keywords.
+1)asc
+2)desc
+
+syntax:-
+=======
+    select * from tablename
+    order by columnname[asc/desc];
+
+
+
+1.Write a query to display the names and salaries of employees,sorted by salary 
+    in descending order from EMP table?
+
+
+
+2.Write a query to display all employee names in alphabetical order ?
+
+
+
+
+3.Write a query to display the all employee records and arrange them according to
+  seniority ?
+
+
+
+
+4.Display the employee records arrange them in ascending order according
+  to department, If multiple employees are in the same department ,sort
+  them by salary in descending order with in the department.
+
+
+
+
+5.Write the query to display the emp_first_name and emp_last_name 
+  as emp_fullname and year of birth and sort them based on their
+  desending age.[INTERVIEW QUESTION]
+
+NOTE:-By default Calender order is ascending order
+
+
+SQL>select * from emp444;
+
+emp_id        emp_first_name        emp_last_name      birthdate
+------      -----------------     --------------      ------------
+  1            john                  doe               1985-04-23
+  2            jill                  davis             1999-06-15
+  3            jack                  Johnson           1992-10-25
+  4            james                 Wilson            1983-09-12
+
+
+
+6.Write a query to display FirstName,LastName and Age from the 
+  emp333 table for all users who are above the age of 25 
+  order by ID in ascending order,
+  your output should look like the following[INTERVIEW QUESTION]
+
+EXPECTED OUTPUT:-
+================
+
+       FIRSTNAME       LASTNAME         AGE
+      ----------      -----------     ------
+         Jenny          Richards        28
+         Noah           Fritz           30
+
+
+
+
+
+
+7.The flight_id,departure_date,departure_location and destination of flights departing after
+  2024-02-06 sort the result by departure time in asending order ?
+  (No need to create any table. Write the query is enough)
+
+SELECT * FROM FLIGHTS;
+
+    FLIGHT_ID        DEPARTURE_DATE           DEPARTURE_LOCATION          DESTINATION           DEPARTURE_TIME
+   -----------      ---------------         ---------------------       ----------------       -----------------------
+      101             05-FEB-24                  New York                  London                 08.30.00
+      102             07-FEB-24                  Paris                     Berlin                 12.15.00
+      103             08-FEB-24                  Los Angeles               Tokyo                  03.00.00
+      104             09-FEB-24                  Chicago                   Toronto                10.45.00
+      105             10-FEB-24                  San Francisco             Sydney                 06.00.00
+
+
+
+8.Write a query to print ID,NAME of the three highest scoring students.
+  print the NAMEs in desending order by SCORE, then acending order by ID 
+  for matching SCOREs  
+
+output format
+============
+The result should contain the IDs and the NAMEs of the three highest scoring students print the records in descending
+order by SCORE,then ascending order by ID
+for matching SCORES.
+
+
+
+
+9.Show all the jobs in the EMP table?
+
+
+
+10.Write a query to list all unique departments numbers from EMP table ?
+
+--------------------------------------------------------------------------------------------
+                              TOP clause
+                             =============
+ 
+ 
+
+
+1.Write a query to display first 5 rows from emp table by using fetch first clause?
+
+
+
+
+2.Write a query to display top 3 highest salaries from emp table?
+
+
+
+
+3.Write a query to display the seniour most employee record from emp table
+  by using fetch first clause?
+
+
+-----------------------------------------------------------------------------------------
+create table emp444
+(
+empid int,
+emp_first_name varchar(10),
+emp_last_name varchar(10),
+birthdate date
+);
+
+insert into emp444 values(1,'john','doe','1985-04-23');
+insert into emp444 values(2,'jill','davis','1999-06-15');
+insert into emp444 values(3,'jack','johnson','1992-10-25');
+insert into emp444 values(4,'james','willson','1983-09-12');
+
+
+
+CREATE TABLE FLIGHTS (
+    FLIGHT_ID INT ,
+    DEPARTURE_DATE DATE,
+    DEPARTURE_LOCATION VARCHAR(50),
+    DESTINATION VARCHAR(50),
+    DEPARTURE_TIME TIME
+);
+
+
+INSERT INTO FLIGHTS VALUES(101, '2024-02-05', 'New York', 'London', '08:30:00');
+INSERT INTO FLIGHTS VALUES(102, '2024-02-07', 'Paris', 'Berlin', '12:15:00');
+INSERT INTO FLIGHTS VALUES(103, '2024-02-08', 'Los Angeles', 'Tokyo', '15:00:00');
+INSERT INTO FLIGHTS VALUES(104, '2024-02-09', 'Chicago', 'Toronto', '10:45:00');
+INSERT INTO FLIGHTS VALUES(105, '2024-02-10', 'San Francisco', 'Sydney', '18:00:00');
+
+
+
+create table student10
+(
+id int,
+name varchar(10),
+score int
+);
+
+insert into student10 values(1,'Bob',50);
+insert into student10 values(2,'John',60);
+insert into student10 values(3,'Harry',45);
+insert into student10 values(4,'Dick',85);
+insert into student10 values(5,'Dixie',85);
+insert into student10 values(6,'Sid',70);
+insert into student10 values(7,'Tom',65);
+insert into student10 values(8,'Alex',90);
+insert into student10 values(9,'Erika',70);
+
+
+

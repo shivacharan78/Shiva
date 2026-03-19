@@ -1,0 +1,276 @@
+                          Self Join
+                         ============
+
+Self join:-Joining a table to itself is called self join. Here 
+=========  joining conditional columns must belongs to
+           same data type.
+
+  Generally in all relational databases self joins are used in
+following 2 senarios. These are
+
+1)Compare one table one column any value with all other values
+  in same column.
+
+2)Compare 2 different column values(same datatype) in a same table
+
+   Whenever we are using self joins then we must create table
+aliasnames in from clause. These aliasnames internally behaves
+like exact tables when query execution time.
+
+------------------------------------------------------------------------------------------------------
+ *
+*1*Write a query to display the employee names and their manager names
+ * from emp table by using self join(V.V.I.M.P)
+
+
+
+2.Write a query to display the employee records who are reporting
+   to BLAKE as a manager by using self join?
+
+
+
+3.Write a query to display the employees who are getting more salary 
+   than their manager salary from emp table using self join?
+
+
+
+4.Write a query to display BLAKE'S manager name from emp table by
+  using self join?
+
+
+
+5.Write a query to display the employees who are joining
+         before their managers from emp table
+                by using self join?
+
+
+
+6.Write a query to display the employees who are getting same salary
+    as SCOTT salary from emp table using self join?
+
+NOTE:-when we are comparing one column any value with all
+====   other values in same column by using self join then
+       we must display data from second alias table only.
+
+------------------------------------------------------------------------------------------------------
+Cross Join:- This join returns the Cartesian product of two tables.
+==========
+
+   We can also retrieve data from multiple tables without using join condition.
+in this case SQL server internally uses default join.
+
+
+
+SQL>select ename,sal,dname,loc
+    from emp cross join dept;
+
+
+o/p:14*4=56 rows displayed(internally cross join is performed)
+
+9.Write a query to generate all possible combinations of car names and colors, so that 
+  each car name appears once with every color. 
+
+SQL>SELECT * FROM CARNAMES;
+
+    CARNAME
+   ---------
+     BMW
+     TOYOTA
+     HONDA
+
+SQL>SELECT * FROM COLORS;
+
+    COLOUR
+   --------
+    RED
+    BLUE
+    BLACK
+     
+     
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

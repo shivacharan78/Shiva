@@ -1,0 +1,75 @@
+                            PL/SQL DAY3
+                          ===============
+
+1.Write a PL/SQL program to increase salary of the given empno
+  with given amount.after increasing the sal display the salary
+  of the employee?
+
+Enter value for empno :7499
+Enter value for amount:2000
+salary is increased(Msg i want to display)
+salary is:3600
+
+
+-----------------------------------------------------------------------------------
+
+2.Write a PL/SQL program eligible for voting system based on age
+
+if age is>=18 then display a message : You are eligible for voting.
+
+if age is<18 then display a message  : You are not eligible for voting.
+                                       Better luck next time.
+
+
+-----------------------------------------------------------------------------------
+
+3.Write a PL/SQL program that accepts a student ID, fetches the marks from 
+  a student111 table, display the grade based on the following conditions
+
+if Marks >= 90 then display a message ---> Grade A
+
+if Marks >= 80 then display a message ---> Grade B
+
+if Marks >= 70 then display a message ---> Grade C
+
+if Marks >= 35 then display a message ---> Grade D
+
+Marks < 35 --->then display a message ---> FAIL
+
+
+
+CREATE TABLE STUDENT111
+(
+SID NUMBER(10),
+SNAME VARCHAR2(10),
+MARKS NUMBER(10)
+);
+
+
+INSERT INTO STUDENT111 VALUES(1,'SURYA',88);
+INSERT INTO STUDENT111 VALUES(2,'KAVYA',74);
+INSERT INTO STUDENT111 VALUES(3,'ANUSHKA',92);
+INSERT INTO STUDENT111 VALUES(4,'PREETHI',12);
+INSERT INTO STUDENT111 VALUES(5,'NITISH',30);
+
+COMMIT;
+
+select * from student111;
+
+      SID      	NAME	  MARKS
+     -----    --------   -------
+      1	       SURYA	   88
+      2	       KAVYA	   74
+      3	       ANUSHKA 	   92
+      4	       PREETHI	   12
+      5	       NITISH	   30
+
+-----------------------------------------------------------------------------------------------------
+4.Write PL/SQL program with SELECT INTO CLAUSE, conditional statements. 
+
+1.Accept a department ID as input.
+
+2.Retrieve the total number of employees in that department using SELECT INTO.
+
+3.If the count > 5, print 'Large Department'; otherwise, print 'Small Department'.
+
